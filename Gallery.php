@@ -1,5 +1,7 @@
 <?php
 
+$user_images = find_user_images($session_user_id);
+
 class Gallery{
 	public $path;
 	
@@ -24,20 +26,33 @@ class Gallery{
 	
 	}
 
-	public function getImages($extensions = array('jpg', 'png','gif', 'jpeg')){
+	public function getImages($extensions = array('jpg', 'png','gif', 'jpeg'), $user_images){
 		$images = $this->getDirectory($this->path);
+		
+		
 		
 		foreach($images as $index => $image){
 			$extension = strtolower(end(explode('.',$image)));
 			if(!in_array($extension, $extensions)){
 				unset($images[$index]);
 			}	else{
-				$images[$index] = array(
-					'full' => $this->path. '/' . $image,
-					'thumb' => $this->path. '/thumbs/' . $image
-				);
+			
+			
+				if(in_array($image, $user_images)) {
+			
+					$images[$index] = array(
+						'full' => $this->path. '/' . $image,
+						'thumb' => $this->path. '/' . $image
+						//'thumb' => $this->path. '/thumbs/' . $image
+					);
+				
+					} //end in array if 
+					else{
+					unset($images[$index]);
+					
+					}
 		
-				}			
+				} // end else			
 		}
 		
 		

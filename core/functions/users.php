@@ -1,5 +1,29 @@
 <?php 
 
+
+function find_user_images  ($session_user_id) {
+
+$result = array();
+
+$query = mysql_query("SELECT *  FROM `grubs` WHERE `user_id` = $session_user_id ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+
+		$result[] = $row['image'];
+	
+	} 
+	return $result;
+
+}
+
+
+
+
+
+
+
+
 function change_profile_image($user_id, $file_temp, $file_ext){
 	$file_name = 'images/profile/'.substr(md5(time()),0, 10). '.' .$file_ext ;
 	move_uploaded_file($file_temp, $file_name);
@@ -17,8 +41,8 @@ function mail_users($subject, $body){
 
 		email($row['email'], $subject, "Hello " . $row['first_name'] .",\n\n ". $body);
 	
-	
 	}
+	
 	
 }
 

@@ -5,7 +5,7 @@
 
 			<li class="start selected"><a href="index.php">Home</a></li>
 
-			<li class=""><a href="register.php">Register</a></li>
+		
 
 			<li><a href="downloads.php">Downloads</a></li>
 

@@ -5,7 +5,10 @@ include 'includes/overall/overallheader.php' ;
 require 'Gallery.php';
 $gallery = new Gallery();
 $gallery->setPath('./uploads/'); 
-$images = $gallery->getImages(array('jpg','png','jpeg','gif')); 
+
+$user_image = find_user_images  ($session_user_id) ;
+
+$images = $gallery->getImages(array('jpg','png','jpeg','gif'), $user_images); 
 ?> 
 
 
