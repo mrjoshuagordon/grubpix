@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+@import "form_styles.css"; 
+
 
 body {
 
@@ -658,17 +660,17 @@ article .article-info a {
 
 
 .profile img {
-	width:100%;
+	width:25%;
 }
 
 
 .profile_page img {
-	width:300px;
+	width:25%;
 }
 
 
 .profile img {
-	width:100%;
+	width:50%;
 }
  
 

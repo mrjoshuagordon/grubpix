@@ -40,7 +40,10 @@ if(!empty($_FILES['file']['name'][0])){
 				'name' => $name,
 				'file' => 'uploads/' . $random_name
 			
-			);
+	 		);
+	
+	//	create_thumbnail($file_name, 'thumbs/'.$random_name, 100, 100);  
+
 		
 	mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`) VALUES ($session_user_id  , '$random_name' , '$name' )");	 
 
@@ -58,8 +61,13 @@ if(!empty($_FILES['file']['name'][0])){
 	} //end foreach
 }
 
+
+make_thumbs();
+
+
+
+
 echo json_encode($uploaded) ;
 
 
 ?>
-

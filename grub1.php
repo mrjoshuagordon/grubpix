@@ -26,7 +26,7 @@ $images = $gallery->getImages(array('jpg','png','jpeg','gif'), $user_images);
 			<div class="gallery cf">
 				<?php  foreach($images as $image):  ?>
 				<div class="gallery-item">
-					<a href="<?php echo  'grubinfo.php?image='.end(explode('/',$image['full'])); ?> " ><img src="<?php echo $image['thumb'];  ?>"> </a> 
+					<a href="<?php echo  $image['full']; ?> " ><img src="<?php echo $image['thumb'];  ?>"> </a> 
 				</div>
 				<?php endforeach;  ?>
 			</div>

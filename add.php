@@ -3,6 +3,9 @@
 include 'core/init.php';
 protect_page();
 include 'includes/overall/overallheader.php' ;
+
+
+
 ?> 
 
 <p> File Upload (jpg, jpeg, gif, or png). Max Size 2MB: </p>
@@ -67,6 +70,11 @@ include 'includes/overall/overallheader.php' ;
 				xhr.open('post', 'upload.php');
 				xhr.send(formData);
 			
+			
+			
+			
+			
+			
 			};
 			
 			
@@ -94,5 +102,17 @@ include 'includes/overall/overallheader.php' ;
 	</body>
 
 
-<?php include 'includes/overall/overallfooter.php'; ?> 
+<?php 
+
+
+
+
+
+
+
+
+
+
+
+include 'includes/overall/overallfooter.php'; ?> 
 

@@ -42,8 +42,8 @@ class Gallery{
 			
 					$images[$index] = array(
 						'full' => $this->path. '/' . $image,
-						'thumb' => $this->path. '/' . $image
-						//'thumb' => $this->path. '/thumbs/' . $image
+						//'thumb' => $this->path. '/' . $image
+						'thumb' => $this->path. '/thumbs/' . $image
 					);
 				
 					} //end in array if 
