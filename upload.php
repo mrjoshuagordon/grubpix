@@ -31,7 +31,7 @@ if(!empty($_FILES['file']['name'][0])){
 	if(in_array($file_ext, $allowed) === false || $_FILES['file']['size'][$position] > 2100000 )  {
 	
 	$uploaded[] = array('name' => 'File not allowed, please use: jpg, jpeg, gif, or png. Max Size 2MB',
-						'file' => 'uploads/error.jpg');
+						'file' => 'withheld/error.jpg');
 	
 	} else{
 	

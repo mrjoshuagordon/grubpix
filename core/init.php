@@ -6,6 +6,7 @@ session_start();
 require 'database/connect.php';
 require 'functions/general.php';
 require 'functions/users.php';
+require 'functions/images.php';
 
 $current_file = explode('/',$_SERVER['SCRIPT_NAME']);
 $current_file = end($current_file);

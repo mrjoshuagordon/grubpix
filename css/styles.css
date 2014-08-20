@@ -50,10 +50,11 @@ body {
 
 table {
 
-	width: 100%;
+	width: 60%;
 
 	text-align: left;
-
+	boder: solid 1px #000;
+	border-collapse: collapse;
 }
 
 
@@ -61,9 +62,16 @@ table {
 th, td {
 
 	padding: 10px 10px;
-
+	text-align: left;
+	border-collapse: collapse;
 }
 
+
+
+tr:nth-child(2n+0) td{
+	background-color: #fff;
+
+}
 
 
 th {
@@ -79,6 +87,7 @@ th {
 td {
 
 	border-bottom: 1px solid #ccc;
+	background-color: #F4F4FF
 
 }
 

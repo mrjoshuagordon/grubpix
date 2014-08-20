@@ -10,3 +10,8 @@
 
 
 }
+
+
+.grub_detail ul li {
+     list-style-type: upper-roman;
+} 

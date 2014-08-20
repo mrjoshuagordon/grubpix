@@ -92,21 +92,6 @@ function create_thumbnail($path, $save, $width, $height){
 
 
 
-function find_user_images  ($session_user_id) {
-
-$result = array();
-
-$query = mysql_query("SELECT *  FROM `grubs` WHERE `user_id` = $session_user_id ");
-
-	while(($row = mysql_fetch_assoc($query)) !== false){
-	
-
-		$result[] = $row['image'];
-	
-	} 
-	return $result;
-
-}
 
 
 
