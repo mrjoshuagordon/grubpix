@@ -25,7 +25,8 @@ include 'includes/overall/overallheader.php' ;
 
 
 	echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
-
+	$image_id = image_id_from_imagename($image);
+	$image_data = image_data($image_id);
 
 }
 
@@ -44,112 +45,11 @@ include 'includes/overall/overallheader.php' ;
 
 
 if(empty($_POST) === false) {
-			if(empty($_POST['title']) === true) {
-				$errors[] = 'Title is Required';
-		
-			}			
-		
 
-		
-			if(empty($_POST['location']) === true)  {
-				$errors[] = 'Location is required';
-		
-			}
-			
-			
-					
-			if(empty($errors) === false ) {
-			echo '<h2> Please fix the following:</h2>';
-				echo output_errors($errors);		
-			}	else{
-			
-			$image_id = image_id_from_imagename($image);			
-			
-			if( isset($_POST['public_check']) && $_POST['public_check'] == 'on'){
-			$allow_public = 1;
-						
-			} else{
-			
-			$allow_public = 0 ;
-			} 		
-			
-			
-			echo 'Locaiton:'.$current_file.'?image='.$imaged;			
-			
-			if($allow_public === 1 ) {
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
-				publish_image($image_id);
-			
-			} else{
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
-			
-			}
-			
-							
-				header('Location:grub.php');
-			//	echo 'Location:'.$current_file.'?image='.$image.'&success';
-				exit();	
-			}
-		
+	if(empty($_POST['Edit']) === false) {
+	?>
 	
-		}
-
-
-?>
-
-
-<?php
-
-$image_id = image_id_from_imagename($image);
-$image_data = image_data($image_id);
-
-
-?>
-
-
-
-<?php 
-
-	$user_id = user_id_from_imagename($image);
-	//echo $user_id;
-	//echo $session_user_id;
-	
-	if($session_user_id == $user_id) {
-
-
-
-
-?>
-
-
-
-<table>
-
-  <tr>
-    <td>Image Title</td>
-    <td><?php echo $image_data['title']; ?>  </td>
-  </tr>
- <tr>
-    <td>Location</td>
-    <td><?php echo $image_data['location']; ?> </td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td><?php echo$image_data['description']; ?></td>
-  </tr>
-</table>
-
-
-	<form action="" method="post"> 
-		<input type="Submit" value="Edit" name="Edit">  
-						
-			
-	</form> 
-
-
-
-<!--
-<div class="form_container"> 
+	<div class="form_container"> 
 	
 	<form action="" method="post"> 
 			<ul > 
@@ -177,10 +77,128 @@ $image_data = image_data($image_id);
 	
 
 </div>
+	
+	
+	
+	<?php
+	} else{
 
--->
+			if(empty($_POST['title']) === true) {
+				$errors[] = 'Title is Required';
+		
+			}			
+		
+
+		
+			if(empty($_POST['location']) === true)  {
+				$errors[] = 'Location is required';
+		
+			}
+			
+			
+					
+			if(empty($errors) === false ) {
+			echo '<h2> Please fix the following:</h2>';
+				echo output_errors($errors);		
+			}  else{
+			
+			$image_id = image_id_from_imagename($image);			
+			
+			if( isset($_POST['public_check']) && $_POST['public_check'] == 'on'){
+			$allow_public = 1;
+						
+			} else{
+			
+			$allow_public = 0 ;
+			} 		
+			
+			
+			//echo 'Locaiton:'.$current_file.'?image='.$imaged;			
+			
+			if($allow_public === 1 ) {
+				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
+				publish_image($image_id);
+			
+			} else{
+				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
+			
+			}
+			
+							
+				header('Location:'.$current_file.'?image='.$image);
+			//	echo 'Location:'.$current_file.'?image='.$image.'&success';
+				exit();	
+			}
+		
+			}
+		}
+
+
+?>
+
+
+<?php
+
+
+
+
+?>
+
+
 
 <?php 
+	$image_id = image_id_from_imagename($image);
+	$image_data = image_data($image_id);
+	$user_id = user_id_from_imagename($image);
+	//echo $user_id;
+	//echo $session_user_id;
+	
+	if($session_user_id == $user_id) {
+
+
+  if( empty($_POST['Edit']) === true ) {
+
+  ?>
+
+
+
+  <table>
+
+	<tr>
+	  <td>Image Title</td>
+	  <td><?php echo $image_data['title']; ?>  </td>
+	</tr>
+   <tr>
+	  <td>Location</td>
+	  <td><?php echo $image_data['location']; ?> </td>
+	</tr>
+	<tr>
+	  <td>Description</td>
+	  <td><?php echo$image_data['description']; ?></td>
+	</tr>
+  </table>
+
+
+	  <form action="" method="post"> 
+		  <input type="Submit" value="Edit" name="Edit">  
+						
+			
+	  </form> 
+
+
+
+  <!--
+
+
+  -->
+
+  <?php 
+
+
+
+  }
+
+
 
 } else{
 ?>
