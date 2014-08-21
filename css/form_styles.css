@@ -15,3 +15,30 @@
 .grub_detail ul li {
      list-style-type: upper-roman;
 } 
+
+
+
+.comment_container {
+		
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 60%;
+}
+
+
+.comment_output {
+		
+		background-color: #F4F4FF;
+
+		border-collapse: collapse;
+		width: 100%;
+}
+
+.comment_table {
+		
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 100%;
+}

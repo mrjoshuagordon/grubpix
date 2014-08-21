@@ -53,7 +53,7 @@ table {
 	width: 60%;
 
 	text-align: left;
-	boder: solid 1px #000;
+
 	border-collapse: collapse;
 }
 
@@ -379,8 +379,8 @@ li {
 
 
 textarea {
-	width: 400px;
-	height: 150px;
+	width: 90%;
+	height: 100px;
 
 }
 

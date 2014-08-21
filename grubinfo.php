@@ -16,8 +16,7 @@ include 'includes/overall/overallheader.php' ;
 
 
 
-
- if(isset($_GET['image']) && !empty($_GET['image'])){
+if(isset($_GET['image']) && !empty($_GET['image'])){
 
 	$image = $_GET['image'];
 	$link  ='./uploads/'.$image;
@@ -25,20 +24,10 @@ include 'includes/overall/overallheader.php' ;
 
 
 	echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
+
 	$image_id = image_id_from_imagename($image);
 	$image_data = image_data($image_id);
-
 }
-
-
-?>
-
-
-<?php
-
-
-
-	
 
 
 
@@ -47,41 +36,17 @@ include 'includes/overall/overallheader.php' ;
 if(empty($_POST) === false) {
 
 	if(empty($_POST['Edit']) === false) {
-	?>
 	
-	<div class="form_container"> 
+	include 'includes/usersgrub.php' ;
 	
-	<form action="" method="post"> 
-			<ul > 
-				<label>
-					<li> Image Title*:<br>
-						<input type="text" name="title" size=35 value="<?php echo $image_data['title']; ?>">  
-					</li>
-				</label>
-				<li> Location (e.g. Homemade, Chipotle, etc.)*:<br>
-						<input type="text" name="location" size=35 value="<?php echo $image_data['location']; ?>">  
-				</li>
-				<li> Description:<br>				
-				<textarea type="text" name="description"><?php echo $image_data['description']; ?></textarea> 
-				</li>				
-				<li> 
-					<input type="checkbox" name="public_check" <?php if($image_data['active'] == 1 ) {  echo 'checked="checked"' ; } ?>">  Make this image public? 
-				</li>
-				<li> 
-					<input type="Submit" value="Publish">  
-				</li>
-				
-			</ul>
-		</form> 
-
+	} else if(empty($_POST['comment_submit']) === false){
 	
-
-</div>
+	require 'includes/grubcomment.php' ;
+//	echo 'good';
+	header('Location:'.$current_file.'?image='.$image);
+	exit();
 	
-	
-	
-	<?php
-	} else{
+	}else{
 
 			if(empty($_POST['title']) === true) {
 				$errors[] = 'Title is Required';
@@ -112,8 +77,7 @@ if(empty($_POST) === false) {
 			$allow_public = 0 ;
 			} 		
 			
-			
-			//echo 'Locaiton:'.$current_file.'?image='.$imaged;			
+				
 			
 			if($allow_public === 1 ) {
 				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
@@ -126,7 +90,6 @@ if(empty($_POST) === false) {
 			
 							
 				header('Location:'.$current_file.'?image='.$image);
-			//	echo 'Location:'.$current_file.'?image='.$image.'&success';
 				exit();	
 			}
 		
@@ -134,105 +97,26 @@ if(empty($_POST) === false) {
 		}
 
 
-?>
 
-
-<?php
-
-
-
-
-?>
-
-
-
-<?php 
-	$image_id = image_id_from_imagename($image);
-	$image_data = image_data($image_id);
+//	$image_id = image_id_from_imagename($image);
+//	$image_data = image_data($image_id);
 	$user_id = user_id_from_imagename($image);
-	//echo $user_id;
-	//echo $session_user_id;
+
 	
 	if($session_user_id == $user_id) {
 
 
   if( empty($_POST['Edit']) === true ) {
 
-  ?>
-
-
-
-  <table>
-
-	<tr>
-	  <td>Image Title</td>
-	  <td><?php echo $image_data['title']; ?>  </td>
-	</tr>
-   <tr>
-	  <td>Location</td>
-	  <td><?php echo $image_data['location']; ?> </td>
-	</tr>
-	<tr>
-	  <td>Description</td>
-	  <td><?php echo$image_data['description']; ?></td>
-	</tr>
-  </table>
-
-
-	  <form action="" method="post"> 
-		  <input type="Submit" value="Edit" name="Edit">  
-						
-			
-	  </form> 
-
-
-
-  <!--
-
-
-  -->
-
-  <?php 
-
-
+	include 'includes/usersgrub_prompt_edit.php' ; 
 
   }
 
 
 
 } else{
-?>
 
-<div class="grub_detail">
-
-	
-	
-<table>
-
-  <tr>
-    <td>Image Title</td>
-    <td><?php echo $image_data['title']; ?>  </td>
-  </tr>
- <tr>
-    <td>Location</td>
-    <td><?php echo $image_data['location']; ?> </td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td><?php echo$image_data['description']; ?></td>
-  </tr>
-</table>
- 
-	
-	
-
-
-</div>
-
-
-
-
-<?php 
+	include 'includes/publicgrub.php' ; 
 
 
 
