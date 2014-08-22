@@ -2,9 +2,40 @@
 
 
 
+function get_active_users() {
+
+$result = array();
+
+$query = mysql_query("SELECT *  FROM `users` WHERE `active` = 1 ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		if(empty($row['profile'])) {
+		
+		$result[] = array('no_profile.jpg', $row['username']); 
+		
+	//	$result[] = 'no_profile.jpg';
+	
+			} else{
+	
+		$result[] = array(end(explode('/',$row['profile'])), $row['username']); 
+	//	$result[] = end(explode('/',$row['profile']));
+	
+		} // end if
+	
+	}  // end while 
+	return $result;
+
+}
 
 
+function find_username_from_profile($image) {
 
+return mysql_result(mysql_query("SELECT `username` from `users` where `profile` = '$image'"),0,
+	'username');
+
+
+}
 
 
 

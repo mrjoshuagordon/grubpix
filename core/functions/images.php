@@ -3,6 +3,61 @@
 
 
 
+function make_profile_thumbs() {
+
+$dir = 'images/profile/';
+$dh  = opendir($dir);
+$allowed = array('jpg','jpeg','gif','png');
+
+
+while (false !== ($filename = readdir($dh))) {
+
+$file_ext  = strtolower(end(explode('.',$filename)));
+
+	if( in_array($file_ext, $allowed)) {
+	
+    $files[] = $filename;
+    
+    } 
+} 
+
+foreach($files as $file){
+
+	$fileloc = 'images/profile/thumbs'.$file;
+
+if(!file_exists($fileloc)) {
+	create_thumbnail($dir.'/'.$file, 'images/profile/thumbs/'.$file, 100, 100);
+//	echo 'file created' . $file;
+//echo "The file $fileloc does not exists" . '<br>';
+	} else{
+	//echo "The file $fileloc exists".'<br>';
+	
+	}
+}  
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function image_data( $image_id) {
 	
 $data = mysql_fetch_assoc(mysql_query("SELECT * FROM `image_data` WHERE `grub_id` = $image_id"));
@@ -49,7 +104,11 @@ $query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ");
 
 
 
-
+function image_name_from_id($image_id){
+	$image_id = sanitize($image_id);
+	return mysql_result(mysql_query("SELECT `image` from `grubs` where `grub_id` = '$image_id'"),0,
+	'image');
+} 
 
 
 

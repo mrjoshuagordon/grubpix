@@ -23,6 +23,8 @@
 
 <?php
 
-//include 'includes/grubcomment.php' ; 
+include 'includes/grubcomment.php' ; 
 
 ?>
+
+

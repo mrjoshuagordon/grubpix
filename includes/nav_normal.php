@@ -15,6 +15,9 @@
 			<li class="end"><a href="grub.php">Your Grubs</a></li> 
 			
 			<li class="end"><a href="grubgallery.php">Grub Gallery</a></li> 
+
+			<li class="end"><a href="userpages.php">Users </a></li> 
+			
 			
 		</ul>
 	</div>

@@ -20,7 +20,8 @@
 				if(in_array($file_ext, $allowed) === true){
 					
 					change_profile_image($session_user_id, $file_temp, $file_ext);
-					header('Locaiton: ' .$current_file);
+					make_profile_thumbs();
+					header('Location: ' .$current_file);
 					exit();
 				} else{
 				

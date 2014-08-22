@@ -1,10 +1,18 @@
 <br >
+
+<?php  include 'includes/grub_rate.php' ;  ?>
+
+
+
+
 <div class="comment_container">
 
 <h4> Enter a comment: </h4>
 
 
 <?php
+
+
 
 
 $user_id = $user_data['user_id'];
@@ -49,6 +57,12 @@ if(strlen($comment) > 255) {
 
 	
 ?>
+
+
+
+
+
+
 
 
 
