@@ -15,11 +15,7 @@
   </table>
 
 
-	  <form action="" method="post"> 
-		  <input type="Submit" value="Edit" name="Edit">  
-						
-			
-	  </form> 
+	 <a href = " <?php echo 'grubedit.php?image='.$image ;?> " > Edit </a> 
 
 <?php
 

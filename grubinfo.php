@@ -19,7 +19,7 @@ include 'includes/overall/overallheader.php' ;
 if(isset($_GET['image']) && !empty($_GET['image'])){
 
 	$image = $_GET['image'];
-	$link  ='./uploads/'.$image;
+    $link  ='./uploads/'.$image;
 
 
 
@@ -32,85 +32,14 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 
 
 
-
-if(empty($_POST) === false) {
-
-	if(empty($_POST['Edit']) === false) {
-	
-	include 'includes/usersgrub.php' ;
-	
-	} else if(empty($_POST['comment_submit']) === false){
-	
-	require 'includes/grubcomment.php' ;
-//	echo 'good';
-	header('Location:'.$current_file.'?image='.$image);
-	exit();
-	
-	}else{
-
-			if(empty($_POST['title']) === true) {
-				$errors[] = 'Title is Required';
-		
-			}			
-		
-
-		
-			if(empty($_POST['location']) === true)  {
-				$errors[] = 'Location is required';
-		
-			}
-			
-			
-					
-			if(empty($errors) === false ) {
-			echo '<h2> Please fix the following:</h2>';
-				echo output_errors($errors);		
-			}  else{
-			
-			$image_id = image_id_from_imagename($image);			
-			
-			if( isset($_POST['public_check']) && $_POST['public_check'] == 'on'){
-			$allow_public = 1;
-						
-			} else{
-			
-			$allow_public = 0 ;
-			} 		
-			
-				
-			
-			if($allow_public === 1 ) {
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
-				publish_image($image_id);
-			
-			} else{
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
-			
-			}
-			
-							
-				header('Location:'.$current_file.'?image='.$image);
-				exit();	
-			}
-		
-			}
-		}
-
-
-
-//	$image_id = image_id_from_imagename($image);
-//	$image_data = image_data($image_id);
-	$user_id = user_id_from_imagename($image);
+$user_id = user_id_from_imagename($image);
 
 	
 	if($session_user_id == $user_id) {
 
-
-  if( empty($_POST['Edit']) === true ) {
-
 	include 'includes/usersgrub_prompt_edit.php' ; 
 
-  }
+  
 
 
 
@@ -121,6 +50,20 @@ if(empty($_POST) === false) {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+//	$image_id = image_id_from_imagename($image);
+//	$image_data = image_data($image_id);
+	
 
 
 

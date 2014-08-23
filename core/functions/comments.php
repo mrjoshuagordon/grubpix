@@ -8,14 +8,15 @@ $comment = sanitize($comment);
 
 	$query = mysql_query("SELECT COUNT(`grub_id`) from `grub_comment` WHERE `grub_id` = '$image_id' AND `user_id` = '$user_id' ");
 	
-	if(mysql_result($query,0)>0) {
 	
-	mysql_query("UPDATE `grub_comment` SET `grub_id` = '$image_id' , `user_id`= '$user_id' , `username` = '$username', `comment` = '$comment'
-	 WHERE `grub_id` = '$image_id' ");
 	
+	if(mysql_result($query,0) == 0) {
+	
+	mysql_query("INSERT INTO `grub_comment` (`grub_id`, `user_id`, `username`, `comment`) VALUES ('$image_id' , '$user_id' , '$username',' $comment' )");
 	} else{	 
 
-	mysql_query("INSERT INTO `grub_comment` (`grub_id`, `user_id`, `username`, `comment`) VALUES ('$image_id' , '$user_id' , '$username',' $comment' )");
+	mysql_query("UPDATE `grub_comment` SET  `comment` = '$comment' WHERE `grub_id` = '$image_id' AND `user_id` = '$user_id' ");
+
 
 	}
 

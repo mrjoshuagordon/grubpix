@@ -8,6 +8,7 @@ require 'functions/general.php';
 require 'functions/users.php';
 require 'functions/images.php';
 require 'functions/comments.php';
+require 'functions/ratings_functions.php';
 
 $current_file = explode('/',$_SERVER['SCRIPT_NAME']);
 $current_file = end($current_file);
