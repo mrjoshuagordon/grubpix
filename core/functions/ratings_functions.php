@@ -90,19 +90,58 @@ $query = mysql_query("SELECT * FROM `grub_guess` WHERE `grub_id` = '$image_id'  
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	
-		$result[] = array($row['calories'], $row['protein'], $row['fat'], $row['carbs'], $row['fiber'] ) ;
+		$result[] = array('calories' => $row['calories'], 'protein' => $row['protein'],
+		'fat' => $row['fat'], 'carbs' => $row['carbs'], 'fiber' => $row['fiber'] ) ;
 	
 	} 
 	if(!empty($result)) {
 	return $result[0];
 	} else{
 	
-	return array('0','0','0','0','0');
+	$result[] = array('calories' => '0', 'protein' => '0',
+		'fat' => '0', 'carbs' => '0', 'fiber' => '0' ) ;
 	
 	}
 	
 
 }
+
+
+
+
+
+
+function find_overall_macros($image_id) {
+
+
+
+$query = mysql_query("SELECT AVG(`calories`) as 'calories',
+							 AVG(`protein`)  as 'protein', 
+							 AVG(`fat`)  as 'fat', 
+							 AVG(`carbs`)  as 'carbs',
+							 AVG(`fiber`)  as 'fiber'
+					  FROM `grub_guess` 
+					  WHERE `grub_id` = '$image_id'  ");
+
+while(($row = mysql_fetch_assoc($query)) !== false){
+	
+
+		$result[] = array( 'overall_calories' => $row['calories'], 'overall_protein' => $row['protein'], 'overall_fat' => $row['fat'], 'overall_carbs' => $row['carbs'], 'overall_fiber' => $row['fiber'] ) ;
+	} 
+
+	if(!empty($result)) {
+		return $result[0];
+	} else{
+		
+		$no_result = array( 'overall_calories' => '0', 'overall_protein' => '0', 'overall_fat' => '0', 'overall_carbs' => '0', 'overall_fiber' => '0' );
+	
+		return  $no_result[0] ;
+	
+	}
+	
+
+}
+
 
 
 
