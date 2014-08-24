@@ -1,0 +1,14 @@
+
+
+.columns {
+	min-height: 100px;
+}
+
+header#site-header{
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.wrapper {
+	margin-bottom: 20px;
+}

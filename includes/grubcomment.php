@@ -21,7 +21,7 @@ $image_id = image_id_from_imagename($image);
 
 
 
-if(empty($_POST) === false) { 
+if(!empty($_POST['comment_submit']) ) { 
  
 
 $comment = $_POST['comment'];	
@@ -47,6 +47,7 @@ if(strlen($comment) > 255) {
 	
 
 	post_comment($image_id, $user_id, $username, $comment);
+	
 	
 
 	}

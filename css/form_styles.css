@@ -42,3 +42,12 @@
 		border-collapse: collapse;
 		width: 100%;
 }
+
+
+.table_container {
+		
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 100%;
+}

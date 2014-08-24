@@ -97,3 +97,51 @@ echo 'test';
 <?php include 'includes/overall/overallfooter.php'; ?> 
 
  
+
+
+<!-- 
+<h4> Please fill out the image details, fields marked with an * are required: </h4>
+	
+<form action="" method="post">  
+		Recipe: 
+	
+			<li> 
+				<input type="checkbox" name="include_recipe">  Would you like to include a recipe? 
+			</li>
+	
+	</form> 
+<p> 
+  <input type="button" value="Add Ingredient" onClick="addRow('dataTable')" /> 
+  <input type="button" value="Remove Ingredient" onClick="deleteRow1('dataTable')" /> 
+</p>
+
+<table id="dataTable" class="form" border="1">
+ <tbody>
+  <tr>
+	<p>
+
+	<td>
+	<label>Ingredient</label>
+	<input type="text" name="BX_NAME[]">
+	</td>
+	<td>
+	<label for="BX_age">Amount</label>
+	<input type="text" class="small"  name="BX_age[]">
+	</td>
+	<td>
+	<label for="BX_gender">Units</label>
+	<select id="BX_gender" name="BX_gender">
+		<option>....</option>
+		<option>Grams</option>
+		<option>Ml</option>
+		<option>Ounces</option>
+		<option>Fl Ounces</option>
+	</select>
+	</td>
+	</p>
+  </tr>
+ </tbody>
+</table>
+
+<br><br><br><br>
+-->
