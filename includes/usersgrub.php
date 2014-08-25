@@ -1,34 +1,4 @@
-<h4> Please fill out the image details, fields marked with an * are required: </h4>
 
-<div class="form_container"> 	
-	<form action="" method="post"> 
-		<ul > 
-			<label>
-				<li> Image Title*:<br>
-					<input type="text" name="title" size=35 value="<?php echo $image_data['title']; ?>">  
-				</li>
-			</label>
-			
-				<li> Location (e.g. Homemade, Chipotle, etc.)*:<br>
-					<input type="text" name="location" size=35 value="<?php echo $image_data['location']; ?>">  
-				</li>
-				
-				<li> Description:<br>				
-				<textarea type="text" name="description"><?php echo $image_data['description']; ?></textarea> 
-				</li>
-								
-				<li> 
-					<input type="checkbox" name="public_check" <?php if($image_data['active'] == 1 ) {  echo 'checked="checked"' ; } ?>">  Make this image public? 
-				</li>
-				
-				<li> 
-					<input type="Submit" value="Publish">  
-				</li>
-			
-		</ul>
-	</form> 
-</div>
-	
 	
 	
 	
@@ -40,8 +10,8 @@
 	$Amount = $_POST['BX_Amount'];
 	$Unit = $_POST['BX_Unit'];
 	
-//	echo $recipe_name;
-//	print_r($BX_Ingredient[0]);
+	echo $recipe_name;
+	print_r($BX_Ingredient[0]);
 //	print_r($BX_Amount);
 ///	print_r($BX_Unit);
 	
@@ -55,29 +25,24 @@
 				echo output_errors($comment_errors);		
 			echo '</div>'	;	
 	
-	} else	if(empty($BX_Ingredient[0])){
-		$comment_errors[] = 'Please enter at least one ingredient';
-			echo '<div class="comment_container"> <h2> Please fix the following:</h2>';
-				echo output_errors($comment_errors);		
-			echo '</div>'	;
+	}  else{
+	post_recipe($session_user_id, $image_id, $recipe_name, $recipe_directions);
 	
-	} else{
+	}
 	
-	 $recipe_result = get_recipe_id($image_id);	
-	$recipe_id =  $recipe_result['recipe_id'] ;
-	 	
-	post_recipe($session_user_id, $image_id, $recipe_name, $recipe_directions);  
-	
-	// submit ingredients
-	
-	post_ingredients($recipe_id,  $BX_Ingredient, $Amount, $Unit);
-	
+	if(!empty($BX_Ingredient[0])){
+		//$comment_errors[] = 'Please enter at least one ingredient';
+		//	echo '<div class="comment_container"> <h2> Please fix the following:</h2>';
+		//		echo output_errors($comment_errors);		
+		//	echo '</div>'	;
+			 $recipe_result = get_recipe_id($image_id);	
+		$recipe_id =  $recipe_result['recipe_id'] ;
+		post_ingredients($recipe_id,  $BX_Ingredient, $Amount, $Unit);
 
 	
 	}
 	
 	}
-	
 	  ?>
 	
 	
@@ -96,16 +61,6 @@ $get_recipe_directions = empty($get_recipe['recipe_directions']) ? "" :  $get_re
 
 ?>
 
-
-<?php
-
-if(!empty($_POST['ingredientForm'])) {
-	
-
-
-}
-
- ?>
 
 
 

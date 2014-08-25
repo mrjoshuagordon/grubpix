@@ -17,18 +17,55 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 
 	$image_id = image_id_from_imagename($image);
 	$image_data = image_data($image_id);
-	
+	$image = $_GET['image'];
 	
 
 }
 ?> 
 
+<h4> Please fill out the image details, fields marked with an * are required: </h4>
 
+<div class="form_container"> 	
+	<form action="" method="post" name="image_detail_form"> 
+		<ul > 
+			<label>
+				<li> Image Title*:<br>
+					<input type="text" name="title" size=35 value="<?php echo $image_data['title']; ?>">  
+				</li>
+			</label>
+			
+				<li> Location (e.g. Homemade, Chipotle, etc.)*:<br>
+					<input type="text" name="location" size=35 value="<?php echo $image_data['location']; ?>">  
+				</li>
+				
+				<li> Description:<br>				
+				<textarea type="text" name="description"><?php echo $image_data['description']; ?></textarea> 
+				</li>
+								
+				<li> 
+					<input type="checkbox" name="public_check" <?php if($image_data['active'] == 1 ) {  echo 'checked="checked"' ; } ?>">  Make this image public? 
+				</li>
+				
+				<li> 
+					<input type="Submit" value="Publish" name="Publish">  
+				</li>
+			
+		</ul>
+	</form> 
+</div>
 
 <?php 
+
+
+	
+
+
+	 
+
+
+
 if(empty($_POST['Publish']) === false) {
 
-echo 'test';
 
 
 			if(empty($_POST['title']) === true) {
@@ -79,17 +116,15 @@ echo 'test';
 				
 			}
 		
-		//	header('Location:'.$current_file.'?image='.$image);
-	
-	
+		
+
 	
 	
 	
 			
 		}
 
-	  include 'includes/usersgrub.php' ;
-
+ include 'includes/usersgrub.php' ;
 ?> 
 
 

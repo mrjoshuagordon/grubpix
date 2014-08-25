@@ -9,6 +9,7 @@ require 'functions/users.php';
 require 'functions/images.php';
 require 'functions/comments.php';
 require 'functions/ratings_functions.php';
+require 'functions/recipes.php';
 
 $current_file = explode('/',$_SERVER['SCRIPT_NAME']);
 $current_file = end($current_file);
