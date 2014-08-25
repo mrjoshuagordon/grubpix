@@ -7,7 +7,7 @@ include 'includes/overall/overallheader.php' ;
 
 ?> 
 
-<script type="text/javascript" src="js/script.js"></script> 
+
 
 <h1> Grub Info </h1>
 

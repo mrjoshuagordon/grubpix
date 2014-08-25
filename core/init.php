@@ -2,7 +2,7 @@
 session_start();
 
 //error_reporting(0);  // turn back on later
-
+//cd /Applications/XAMPP/xamppfiles/htdocs 
 require 'database/connect.php';
 require 'functions/general.php';
 require 'functions/users.php';
