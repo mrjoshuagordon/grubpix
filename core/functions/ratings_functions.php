@@ -2,6 +2,24 @@
 
 
 
+function find_number_of_guesses($image_id) {
+
+return mysql_result(mysql_query("SELECT COUNT(DISTINCT `user_id`) as `user_id` from `grub_guess` WHERE `grub_id` = '$image_id'"),0,
+	'user_id');
+	
+}
+
+
+
+function find_number_of_ratings($image_id) {
+
+return mysql_result(mysql_query("SELECT COUNT(DISTINCT `user_id`) as `user_id` from `grubs_ratings` WHERE `grub_id` = '$image_id'"),0,
+	'user_id');
+	
+}
+
+
+
 function find_user_rating ($image_id, $user_id) {
 
 $result = array();

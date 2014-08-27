@@ -8,6 +8,47 @@ include 'includes/overall/overallheader.php' ;
 
 ?> 
 
+
+<?php
+		
+		if(isset($_FILES['image_add']) === true){
+				
+			if(empty($_FILES['image_add']['name'])===true){
+			 	echo 'Please choose a file';
+			
+			} else{
+				$allowed = array('jpg','jpeg','gif','png');
+				
+				$file_name = $_FILES['image_add']['name'];
+				$file_ext = strtolower(end(explode('.',$file_name)));
+				$file_temp = $_FILES['image_add']['tmp_name'];
+				
+				if(in_array($file_ext, $allowed) === true){
+					
+					//change_profile_image($session_user_id, $file_temp, $file_ext);
+					//make_profile_thumbs();
+					header('Location: ' .$current_file);
+					exit();
+				} else{
+				
+					echo 'Incorrect file type. Allowed: ';
+					echo implode(', ', $allowed);
+				}
+				
+				
+				// need to limit file size
+				
+				
+			}
+						
+		}
+		
+			// show image
+		 ?>
+
+
+
+
 <p> File Upload (jpg, jpeg, gif, or png). Max Size 2MB: </p>
 
 
@@ -99,9 +140,14 @@ include 'includes/overall/overallheader.php' ;
 		}());
 	</script>
 	
-	</body>
 
+	 <br/ >
 
+ <form action="" method="post" enctype="multipart/form-data">
+		 <input type="file" name="image_add"> <input type="submit">
+ </form>
+		
+		</body>		 
 <?php 
 
 

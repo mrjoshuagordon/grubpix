@@ -46,6 +46,7 @@
 
 <div class="table_container">
 	<h4> Guess the Calories of this Grub! </h4> 
+	Users Guessed: <?php echo find_number_of_guesses($image_id);?>
 	<form name="macroForm" method="post"> 
 		<table border="1" style="width:100%">
 		<tr>

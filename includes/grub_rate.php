@@ -1,6 +1,10 @@
 <div class="comment_container">
 <h4> Rate this Grub </h4> 
 
+
+Users Rated: <?php echo find_number_of_ratings($image_id);?> 
+
+
 <?php
 //All grubs
 $query = mysql_query("SELECT * from `grubs` WHERE `grub_id` = '$image_id'");
