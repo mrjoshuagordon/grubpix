@@ -17,6 +17,13 @@ function toggleTable() {
 
 //get_recipe ($image_id) <?php   echo  ;  
 
+ $recipe_result = get_recipe_id($image_id);	
+
+//print_r($recipe_result);
+$recipe_id =  $recipe_result['recipe_id'] ;
+
+$name_directions = get_recipe_name_and_directions($recipe_id);
+//print_r($name_directions);
 
 ?>
   
@@ -24,8 +31,8 @@ function toggleTable() {
 <span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Show Recipe</a> </span>
  
 <table id="directionsTable" class="comment_table" border="1" align="center" style="display:none"> 
-<tr> <td> Test </td><tr>
-
+<tr> <td> <b> Recipe Name:  </b> <?php echo  $name_directions['recipe_name']; ?> </td><tr>
+<tr> <td> <b> Directions: </b> <br> <?php echo  $name_directions['recipe_directions']; ?> </td><tr>
 </table>
 <br>
 
@@ -33,8 +40,7 @@ function toggleTable() {
 
 <?php
 
- $recipe_result = get_recipe_id($image_id);	
-$recipe_id =  $recipe_result['recipe_id'] ;
+
 
 $recipe_data = find_recipe_data($recipe_id);
 //print_r($recipe_data );

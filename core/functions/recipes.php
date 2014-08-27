@@ -2,6 +2,28 @@
 
 
 
+
+function get_recipe_name_and_directions($recipe_id){
+
+	$result = array();
+
+	$query = mysql_query("SELECT * FROM `grub_recipe` WHERE 
+	`recipe_id` = '$recipe_id' ");
+	
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'recipe_directions' => $row['recipe_directions'], 'recipe_name' => $row['recipe_name']);
+	
+	} 
+	return $result[0]; 
+	
+	
+}
+
+
+
+
+
 function get_user_recipes($user_id){
 
 	$result = array();
