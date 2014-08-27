@@ -104,11 +104,11 @@ if(empty($_POST['Publish']) === false) {
 				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
 				publish_image($image_id);
 				header('Location: grubinfo.php?image='.$image); 
-				exit();
+				
 			} else{
 				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
 				header('Location: grubinfo.php?image='.$image); 
-				exit();
+				
 			
 			}
 			

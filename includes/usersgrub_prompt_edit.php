@@ -1,3 +1,5 @@
+ 	 <a href = " <?php echo 'grubedit.php?image='.$image ;?> " > Edit Details </a> 
+ 
   <table>
 
 	<tr>
@@ -15,7 +17,7 @@
   </table>
 
 
-	 <a href = " <?php echo 'grubedit.php?image='.$image ;?> " > Edit </a> 
+
 
 <?php
 

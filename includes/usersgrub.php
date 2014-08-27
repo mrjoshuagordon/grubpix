@@ -79,7 +79,7 @@ $recipe_data = find_recipe_data($recipe_id);
 echo '<form action="" method="post" name="ingredientForm">   <tr> <td> Ingredient </td> <td> Amount </td> <td> Unit </td> <td>  Ing </td> </tr>';
 for($i = 0; $i < count($recipe_data ); $i++){
 	$id[] = $recipe_data[$i]['ingredient_id'];
-	echo '<tr> <td>'.  $recipe_data[$i]['ingredient_name'].'</td> <td>'. $recipe_data[$i]['amount'] . '</td> <td>'. $recipe_data[$i]['unit'] . '</td> <td><a href="removeingredient.php?id='.$recipe_data[$i]['ingredient_id'].'"> Remove </a> </td>  </tr>';
+	echo '<tr> <td>'.  $recipe_data[$i]['ingredient_name'].'</td> <td>'. $recipe_data[$i]['amount'] . '</td> <td>'. $recipe_data[$i]['unit'] . '</td> <td><a href="removeingredient.php?id='.$recipe_data[$i]['ingredient_id'].'&grub_id='.$image_id.'"> Remove </a> </td>  </tr>';
 }
 echo '</form>'
 

@@ -2,15 +2,42 @@
 
 
 
-function is_users_recipe($user_id){
+function get_user_recipes($user_id){
+
+	$result = array();
 
 	$query = mysql_query("SELECT `recipe_id` FROM `grub_recipe` WHERE 
 	`user_id` = '$user_id' ");
 	
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = $row['recipe_id'];
+	
+	} 
+	return $result; 
+	
+	
 }
 
 
+function get_user_ingedients_recipes($recipe_ids){
+	
+	$result = array();
 
+	$query = mysql_query("SELECT * FROM `grub_ingredients`");
+	
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		if(in_array($row['recipe_id'], $recipe_ids)){ 
+	
+		$result[] = $row['ingredient_id'];
+	
+	}
+	
+	} 
+	return $result; 
+
+}
 
 
 
@@ -83,7 +110,12 @@ function get_recipe_id($image_id){
 		$result[] = array('recipe_id' => $row['recipe_id']);
 	
 	} 
-	return $result[0];
+
+	if(!empty($result)) 
+		{	return $result[0];
+	
+		}
+		
 
 }
 
@@ -112,6 +144,7 @@ $recipe_directions = sanitize($recipe_directions);
 
 
 
+
 }
 
 
@@ -129,7 +162,11 @@ $query = mysql_query("SELECT * FROM `grub_recipe` WHERE `grub_id` = '$image_id' 
 		$result[] = array('recipe_name' => $row['recipe_name'], 'recipe_directions' => $row['recipe_directions']);
 	
 	} 
-	return $result[0];
+	if(!empty($result)) 
+	{	return $result[0];
+	
+	}
+		
 
 
 }

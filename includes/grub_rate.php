@@ -23,13 +23,13 @@ while(($row = mysql_fetch_assoc($query)) !== false){
 <?php foreach($result as  $r ):?>
 		<div class=""> 
 		 <span id = "rating" > <div class=""> Overall rating <?php find_overall_rating ($image_id); ?> /5 </div> </span> 
-		 <span id = "rating" > <div class=""> Your rating <?php echo find_user_rating ($image_id, $user_id) ;?> /5 </div> </span> 
+		 <span id = "rating" > <div class=""> Your rating <?php echo find_user_rating ($image_id, $session_user_id) ;?> /5 </div> </span> 
 		</div>
 	
 	<?php endforeach; ?>
 
 
-<div class=""> </div>
+<div id="rate" class=""> </div>
 	<div class=""> 
 		Rate this Grub:
 			<?php foreach(range(1,5) as $rating):?>
@@ -46,4 +46,3 @@ while(($row = mysql_fetch_assoc($query)) !== false){
 <br/>
 
 
-<?php  include 'includes/grub_guess.php' ;  ?>

@@ -1,36 +1,7 @@
-<script type="text/javascript">
-function showCaloriesValue(newValue)
-{
-	document.getElementById("calories").innerHTML=newValue;
-}
-
-function showProteinValue(newValue)
-{
-	document.getElementById("protein").innerHTML=newValue;
-} 
-
-function showFatValue(newValue)
-{
-	document.getElementById("fat").innerHTML=newValue;
-}
- 
-function showCarbValue(newValue)
-{
-	document.getElementById("carbs").innerHTML=newValue;
-}
- 
-function showFiberValue(newValue)
-{
-	document.getElementById("fiber").innerHTML=newValue;
-} 
-
-</script>
-
 <?php
-//	return (mysql_result($query,0)==1) ? true : false;
 	$image_id = image_id_from_imagename($image);
 	$macro_user_id = $session_user_id;
-	$result = find_user_macros ($image_id, $macro_user_id); 
+	 $result = find_user_macros ($image_id, $macro_user_id); 
 	$calorie_guess = empty($result['calories']) ? 0 :  $result['calories'] ;
 	$protein_guess = empty($result['protein'])  ? 0 :  $result['protein']; 
 	$fat_guess = empty($result['fat'])          ? 0 :  $result['fat'];
@@ -40,37 +11,38 @@ function showFiberValue(newValue)
 
 
 	$output = find_overall_macros($image_id);
-	
-	//print_r(round($output['overall_protein'],2));
-	//echo '<br>7'.$calorie_guess;
+	//print_r($output);
 
-if(!empty($_POST['macro-submit'])) {  
+/*	
+	if(!empty($_POST['macro-submit']) && isset($_POST['macro-submit'])) {  
 	$calories = $_POST['calories'];
 	$protein = $_POST['protein'];
 	$fat = $_POST['fat'];
 	$carb = $_POST['carbs'];
 	$fiber = $_POST['fiber'];
 	$image_id = image_id_from_imagename($image); 
+
 	$macro_user_id = $session_user_id;
+
 	
+
 	post_rating($image_id, $macro_user_id, $calories, $protein, $fat, $carb, $fiber);
-	header('Location: grubinfo.php?image='.$image);
+
+
+
+ 	header( 'Location: grubinfo.php?image='.$image );
+
+}
+	*/
+
+
 //	print_r(array($user_id, $image_id, $calories, $protein, $fat, $carb, $fiber));
 	
-
 	
-}
-
-
-
 
 
 
 ?>
-
-
-
-
 
 <div class="table_container">
 	<h4> Guess the Calories of this Grub! </h4> 
@@ -113,8 +85,43 @@ if(!empty($_POST['macro-submit'])) {
 		  <td width="150"><?php print_r(round($output['overall_fiber'],2));?></td>
 		</tr>
 		</table>
-		<input type="submit" name="macro-submit" value="Submit Guess" />
+		<input type="submit" name="macro-submit" value="Submit Guess" onclick="show_alert();" />
 	</form>
 </div>
 <br/ >
 
+<script>
+    function show_alert(){
+        return alert("Guess Submitted!");
+    }
+</script>
+
+
+
+<script type="text/javascript">
+function showCaloriesValue(newValue)
+{
+	document.getElementById("calories").innerHTML=newValue;
+}
+
+function showProteinValue(newValue)
+{
+	document.getElementById("protein").innerHTML=newValue;
+} 
+
+function showFatValue(newValue)
+{
+	document.getElementById("fat").innerHTML=newValue;
+}
+ 
+function showCarbValue(newValue)
+{
+	document.getElementById("carbs").innerHTML=newValue;
+}
+ 
+function showFiberValue(newValue)
+{
+	document.getElementById("fiber").innerHTML=newValue;
+} 
+
+</script>

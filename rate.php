@@ -39,10 +39,16 @@ if(isset($_GET['grub_id'],$_GET['rating'])){
 	}
 	
 	
+
+  header('Location:grubinfo.php?image='.$image."#rate");
+ exit();
+  
 	
-	
-	header('Location:grubinfo.php?image='.$image);
-	
+
+} else{ 
+
+	  header('Location:grubinfo.php?image='.$image."#rate");
+ exit();
 }
 
 ?>

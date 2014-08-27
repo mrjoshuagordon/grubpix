@@ -1,7 +1,10 @@
 <br >
 
+<?php include 'includes/grub_recipe.php'; ?>
+
 <?php  include 'includes/grub_rate.php' ;  ?>
 
+<?php  include 'includes/grub_guess.php' ;  ?>
 
 
 

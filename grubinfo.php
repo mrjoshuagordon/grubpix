@@ -9,10 +9,9 @@ include 'includes/overall/overallheader.php' ;
 
 
 
-<h1> Grub Info </h1>
+
 
 <?php
-
 
 
 
@@ -31,7 +30,33 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 
 	
 }
+	
+	if(!empty($_POST['macro-submit']) && isset($_POST['macro-submit'])) {  
+	$calories = $_POST['calories'];
+	$protein = $_POST['protein'];
+	$fat = $_POST['fat'];
+	$carb = $_POST['carbs'];
+	$fiber = $_POST['fiber'];
+	$image_id = image_id_from_imagename($image); 
 
+	$macro_user_id = $session_user_id;
+
+	
+
+	post_rating($image_id, $macro_user_id, $calories, $protein, $fat, $carb, $fiber);
+
+
+
+ 	header( 'Location: grubinfo.php?image='.$image );
+
+
+	
+
+
+//	print_r(array($user_id, $image_id, $calories, $protein, $fat, $carb, $fiber));
+	
+	
+}
 
 
 
