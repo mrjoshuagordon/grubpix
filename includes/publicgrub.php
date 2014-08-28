@@ -1,6 +1,6 @@
 <div class="grub_detail">
+	<a href="report.php?grub_id=<?php echo $image_id; ?>&report=1"> Report Abuse</a>
 
-	
 	
 <table>
 

@@ -54,8 +54,7 @@ function change_profile_image($user_id, $file_temp, $file_ext){
 	$file_name = 'images/profile/'.substr(md5(time()),0, 10). '.' .$file_ext ;
 	move_uploaded_file($file_temp, $file_name);
 	mysql_query("UPDATE `users` SET `profile` = '".$file_name."' WHERE `user_id` = ".(int)$user_id );	
-	
-	
+		
 }
 
 
@@ -240,6 +239,12 @@ function user_id_from_email($email){
 	$email= sanitize($email);
 	return mysql_result(mysql_query("SELECT `user_id` from `users` where `email` = '$email'"),0,
 	'user_id');
+} 
+
+
+function user_name_from_id($user_id){
+	return mysql_result(mysql_query("SELECT `username` from `users` where `user_id` = '$user_id'"),0,
+	'username');
 } 
 
 

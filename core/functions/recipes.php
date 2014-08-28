@@ -15,7 +15,14 @@ function get_recipe_name_and_directions($recipe_id){
 		$result[] = array( 'recipe_directions' => $row['recipe_directions'], 'recipe_name' => $row['recipe_name']);
 	
 	} 
-	return $result[0]; 
+	
+	
+	
+	 
+	if(!empty($result)) 	{	
+	return $result[0];
+	
+	}
 	
 	
 }

@@ -4,7 +4,28 @@
 
 
 
+function non_drag_add_image($user_id, $file_temp, $file_ext, $file_name){
+	$name = $file_name;
+	$upload_name = substr(md5(time()),rand(0,9), rand(30,40)).'.' .$file_ext ;
+	$random_name = 'uploads/'.$upload_name;
 
+	
+	
+	$file_check = $random_name;
+	
+	if(file_exists($file_check)){
+	$upload_name = substr(md5(time()),rand(0,9), rand(30,40)).'.'.$file_ext ;
+	$random_name = 'uploads/'.$upload_name;
+	
+	}	
+	
+	
+		move_uploaded_file($file_temp, $random_name);
+		mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`) VALUES ('$user_id' , '$upload_name' , '$name' )");	 
+
+		 $display_name = 'uploads/thumbs/'.$upload_name;
+		 echo ' Image Uploaded! <br> <img src="'.$display_name.'">';
+}
 
 
 

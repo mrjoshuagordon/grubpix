@@ -23,12 +23,23 @@ include 'includes/overall/overallheader.php' ;
 				$file_ext = strtolower(end(explode('.',$file_name)));
 				$file_temp = $_FILES['image_add']['tmp_name'];
 				
-				if(in_array($file_ext, $allowed) === true){
+				if(in_array($file_ext, $allowed) === true  ){
+						// need to limit file size
+						
+						
+						if($_FILES['image_add']['size'] <= 2100000){
+						
+						non_drag_add_image($session_user_id, $file_temp, $file_ext,$file_name);
+						make_thumbs();
+						//header('Location: ' .$current_file);
+						//exit();
+						
+						} else{
+						
+						echo 'File too big. Max size 2MB!';
+						}
+						
 					
-					//change_profile_image($session_user_id, $file_temp, $file_ext);
-					//make_profile_thumbs();
-					header('Location: ' .$current_file);
-					exit();
 				} else{
 				
 					echo 'Incorrect file type. Allowed: ';
@@ -36,12 +47,22 @@ include 'includes/overall/overallheader.php' ;
 				}
 				
 				
-				// need to limit file size
+			
 				
 				
 			}
 						
 		}
+		
+	/*	
+		function non_drag_add_image($user_id, $file_temp, $file_ext){
+	$file_name = 'images/profile/'.substr(md5(time()),0, 10). '.' .$file_ext ;
+	move_uploaded_file($file_temp, $file_name);
+	mysql_query("UPDATE `users` SET `profile` = '".$file_name."' WHERE `user_id` = ".(int)$user_id );	
+		
+}
+ 
+	*/	
 		
 			// show image
 		 ?>

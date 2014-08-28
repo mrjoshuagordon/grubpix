@@ -1,6 +1,23 @@
 <?php
 
 
+function get_reported_images(){
+
+$result = array();
+
+$query = mysql_query("SELECT `grub_id`, `user_id`, `reason`, COUNT(`grub_id`) as `count` FROM `grub_reporting` GROUP BY `grub_id` ORDER BY `count` DESC");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'grub_id' => $row['grub_id'], 'user_id' => $row['user_id'], 'reason'=> $row['reason'], 'count' => $row['count']);
+	
+	} 
+	if(!empty($result)) {
+		return $result;
+	} 
+
+}
+
 
 function find_number_of_guesses($image_id) {
 
