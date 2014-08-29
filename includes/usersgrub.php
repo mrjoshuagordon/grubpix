@@ -65,6 +65,18 @@ $get_recipe_directions = empty($get_recipe['recipe_directions']) ? "" :  $get_re
 
 
 
+
+	
+<form action="" method="post" name="recipeForm">  
+		<h2> Recipe: </h2> 
+	
+			
+		<li> 	Recipe Name:	<input type="text" name="recipe_name" value="<?php echo $get_recipe_name ; ?>">  </li>
+		<li> 	Directions:	<br > <textarea type="text" name="recipe_directions" ><?php echo $get_recipe_directions; ?></textarea>  </li>	
+
+
+
+
 <div class="comment_output">
 
 <table class="comment_table">
@@ -92,13 +104,6 @@ echo '</form>'
 </div>
 
 
-	
-<form action="" method="post" name="recipeForm">  
-		<h2> Recipe: </h2> 
-	
-			
-		<li> 	Recipe Name:	<input type="text" name="recipe_name" value="<?php echo $get_recipe_name ; ?>">  </li>
-		<li> 	Directions:	<br > <textarea type="text" name="recipe_directions" ><?php echo $get_recipe_directions; ?></textarea>  </li>	
 
 <p> 
   <input type="button" value="Add Ingredient" onClick="addRow('dataTable')" /> 

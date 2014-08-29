@@ -10,8 +10,9 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 	$profile_data = user_data($user_id, 'first_name', 'last_name', 'email','profile');
 	?>
 		
-		
+	
 		<h1> <?php echo $profile_data['first_name']; ?>'s Profile </h1>
+			
 		<p>	Email: <?php echo $profile_data['email']; ?>  </p>
 	
 	<div class="profile_page">
@@ -29,7 +30,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 			}
 
 ?>
-	
+<br><br>	<a href="./settings.php"> Edit Profile</a>
 	</div>
 	
 	

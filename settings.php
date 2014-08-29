@@ -48,6 +48,8 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 		'first_name' 		=> $_POST['first_name'],
 		'last_name' 		=> $_POST['last_name'],
 		'email' 			=> $_POST['email'],
+		'gender'			=> $_POST['gender'],
+		'age'				=> $_POST['age'],
 		'allow_email'		=> $allow_email
 		);
 	
@@ -74,9 +76,42 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 					<li> Email*:<br>
 						<input type="text" name="email" size="35" value="<?php echo $user_data['email']; ?>">  
 					</li>
+					
+					<li>	
+					Gender: <select width="60" style="width: 100px" name="gender">
+								<option><?php echo $user_data['gender']; ?></option>
+								
+								<?php  
+								
+								if($user_data['gender']=='Male') {
+								
+								echo '<option>Female</option>';
+								} else{
+								
+								echo '<option>Male</option>';
+								}
+								
+								?>
+							
+								
+							</select>
+					</li>
+					<li>	
+						Age: <select width="60" style="width: 60px" name="age">
+								<option><?php echo $user_data['age']; ?></option>
+								<?php
+								for($i=1; $i<101; $i++){
+								if($i != $user_data['age'] ) {
+								echo '<option>'.$i.'</option>' ;
+								}
+							}			?>
+							</select>
+					</li>		
+					
 					<li> 
 						<input type="checkbox" name="allow_email" <?php if($user_data['allow_email'] == 1 ) {  echo 'checked="checked"' ; } ?> >  Would you like to receive email from us?
 					</li>
+				
 					
 					<li> 
 						<input type="Submit" value="Submit Changes">  
