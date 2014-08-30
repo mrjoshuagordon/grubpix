@@ -3,6 +3,26 @@
 
 
 
+function get_ingredients(){
+
+	$name = array();
+	$query_run = mysql_query("SELECT * FROM `grub_ingredients` ");
+		
+		while($query_row = mysql_fetch_assoc($query_run)){
+		
+			  $name[] = $query_row['ingredient_name'];
+		
+		}
+
+	$arr = array_unique($name);
+ 	$out = '"'.implode('", "',$arr).'"';
+	return($out);
+}
+
+
+
+
+
 function get_recipe_name_and_directions($recipe_id){
 
 	$result = array();

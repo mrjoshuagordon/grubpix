@@ -3,9 +3,34 @@
 include 'core/init.php';
 protect_page();
 include 'includes/overall/overallheader.php' ;
+$out = get_locations();
+
+//echo $out;
+
+?>
 
 
 
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+         //   var data = ["Boston Celtics", "Chicago Bulls", "Miami Heat", "Orlando Magic", "Atlanta Hawks", "Philadelphia Sixers", "New York Knicks", "Indiana Pacers", "Charlotte Bobcats", "Milwaukee Bucks", "Detroit Pistons", "New Jersey Nets", "Toronto Raptors", "Washington Wizards", "Cleveland Cavaliers"];
+			  var data = [  <?php echo $out ?>];
+		   $("#location").autocomplete({
+
+		   source:data,
+		appendTo: "#hold"
+		
+
+		   
+		   });
+        });
+    </script>
+
+
+<?php
 if(isset($_GET['image']) && !empty($_GET['image'])){
 
 	$image = $_GET['image'];
@@ -21,7 +46,17 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 	
 
 }
+
+
+
 ?> 
+
+
+
+
+<?php  ?>
+  
+
 
 <h4> Please fill out the image details, fields marked with an * are required: </h4>
 
@@ -34,10 +69,13 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 				</li>
 			</label>
 			
-				<li> Location (e.g. Homemade, Chipotle, etc.)*:<br>
-					<input type="text" name="location" size=35 value="<?php echo $image_data['location']; ?>">  
-				</li>
+			
+					   
+			<div width="200px"  >   Location (e.g. Homemade, Chipotle, etc.)*:  <br>
+ 			<input id="location" type="text" name="location" value="<?php echo $image_data['location']; ?>" autocomplete="off"/> <span  style="background-color: #eceff0;" id="hold"> </span> <br>	
+				</div>
 				
+				<?php  //add in dynamic drop down?>
 				<li> Description:<br>				
 				<textarea type="text" name="description"><?php echo $image_data['description']; ?></textarea> 
 				</li>

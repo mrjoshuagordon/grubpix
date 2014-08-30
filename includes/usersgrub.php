@@ -1,6 +1,7 @@
 
+
 	
-	
+
 	
 	<?php if(!empty($_POST['submit_recipe'])) {
 	$recipe_name = $_POST['recipe_name'];
@@ -10,8 +11,8 @@
 	$Amount = $_POST['BX_Amount'];
 	$Unit = $_POST['BX_Unit'];
 	
-	echo $recipe_name;
-	print_r($BX_Ingredient[0]);
+//	echo $recipe_name;
+//	print_r($BX_Ingredient[0]);
 //	print_r($BX_Amount);
 ///	print_r($BX_Unit);
 	
@@ -103,7 +104,7 @@ echo '</form>'
 
 </div>
 
-
+ 
 
 <p> 
   <input type="button" value="Add Ingredient" onClick="addRow('dataTable')" /> 
@@ -118,7 +119,9 @@ echo '</form>'
 	
 	<td>
 	<label>Ingredient</label>
-	<input type="text" name="BX_Ingredient[]">
+
+	 <input type="text" id="BX_Ingredient" name="BX_Ingredient[]">
+
 	</td>
 	<td>
 	<label for="BX_age">Amount</label>
@@ -139,6 +142,9 @@ echo '</form>'
   	
  </tbody>
 </table>
-  <input type="Submit" value="Submit Recipe" name="submit_recipe">  
+
+  <input type="Submit" value="Submit Recipe" name="submit_recipe">    
+  
   	</form> 
+
 <br><br><br><br>

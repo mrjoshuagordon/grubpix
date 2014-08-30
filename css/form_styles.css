@@ -51,3 +51,37 @@
 		border-collapse: collapse;
 		width: 100%;
 }
+
+ /* http://docs.jquery.com/UI/Autocomplete#theming*/
+.ui-autocomplete { position: relative; cursor: default; background:#CCC }   
+
+/* workarounds */
+html .ui-autocomplete { width:150px; } /* without this, the menu expands to 100% in IE6 */
+.ui-autocomplete {
+	background-color: #eceff0;
+    list-style:none;
+    padding: 10px;
+    margin-top: -10px;
+	margin-left: 220px;
+    display:block;
+	color:#363639;
+	font:1em "Open Sans", sans-serif;
+	
+}
+
+
+.ui-autocomplete1 { position: relative; cursor: default; background:#CCC }   
+
+/* workarounds */
+html .ui-autocomplete1 { width:150px; } /* without this, the menu expands to 100% in IE6 */
+.ui-autocomplete1 {
+	background-color: #eceff0;
+    list-style:none;
+    padding: 10px;
+    margin-top: -10px;
+	margin-left: 220px;
+    display:block;
+	color:#363639;
+	font:1em "Open Sans", sans-serif;
+	
+}

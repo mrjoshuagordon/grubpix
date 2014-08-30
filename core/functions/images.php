@@ -1,6 +1,23 @@
 <?php 
 
 
+function get_locations(){
+
+	$name = array();
+	$query_run = mysql_query("SELECT * FROM `image_data` ");
+		
+		while($query_row = mysql_fetch_assoc($query_run)){
+		
+			  $name[] = $query_row['location'];
+		
+		}
+
+	$arr = array_unique($name);
+ 	$out = '"'.implode('", "',$arr).'"';
+	return($out);
+}
+
+
 
 
 
