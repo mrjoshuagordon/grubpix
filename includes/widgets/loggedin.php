@@ -5,6 +5,13 @@
 	<div class="profile">
 		<?php
 		
+		
+		$grub_ids = find_grub_ids();
+		$images =  find_public_images( $grub_ids );
+		
+	//	print_r($images[0]);
+	//	die();
+		
 		if(isset($_FILES['profile']) === true){
 				
 			if(empty($_FILES['profile']['name'])===true){
@@ -54,5 +61,36 @@
 		</ul>	
 	
 	</div>	 
+	
+
+	
+	Recommended Grubs:
+	<div class="wrap_rec">
+    <table class="head">
+        <tr>
+            <td>Grub</td>
+            <td>Title</td>
+            <td>Description</td>
+        </tr>
+    </table>
+    <div class="inner_table_rec">
+        <table> <?php 
+							for($i = 0; $i < 5; $i++){
+						
+						 $image = $images[$i]; 
+						$grub_id = image_id_from_imagename($image); 
+						$temp = image_data( $grub_id );	
+						
+						echo '<tr> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td>'. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						}
+					?>
+    </table>
+    </div>
+	</div> 
+	
+	
+	
+
+	
 </div>
  

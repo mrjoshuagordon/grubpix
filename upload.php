@@ -43,9 +43,10 @@ if(!empty($_FILES['file']['name'][0])){
 	 		);
 	
 	//	create_thumbnail($file_name, 'thumbs/'.$random_name, 100, 100);  
-
+	date_default_timezone_set('America/Los_Angeles');
+	$time = date("Y-m-d h:i:sa", time()) ; 
 		
-	mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`) VALUES ($session_user_id  , '$random_name' , '$name' )");	 
+	mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`, `time`) VALUES ($session_user_id  , '$random_name' , '$name', '$time' )");	 
 
 		//mysql_query("INSERT INTO `users` ($fields) VALUES ($data)");
 		

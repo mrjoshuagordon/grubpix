@@ -1,6 +1,102 @@
 <?php 
 
 
+
+function get_setting_limit($user_id) {
+
+
+$result = array();
+
+$query = mysql_query("SELECT * FROM `user_settings` WHERE `user_id` = '$user_id'  ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'limit' => $row['image_view'], 'order' => $row['order']);
+	
+	} 
+	return $result[0];
+
+
+
+} 
+
+
+
+
+
+function user_setting_limit_input($user_id, $limit, $order){
+
+	$limit= (int) $limit; 
+	
+	$query = mysql_query("SELECT COUNT(`user_id`) from `user_settings` WHERE `user_id` = '$user_id'  ");
+			
+		if( mysql_result($query,0)>=1) {
+			
+		mysql_query("UPDATE `user_settings` SET `image_view` = '$limit', `order` = '$order'  WHERE `user_id` = '$user_id' ");
+					
+	
+		} else{
+				
+		mysql_query("INSERT INTO `user_settings` (`user_id`, `image_view`, `order`) VALUES ('$user_id' , '$limit', '$order')");
+
+		} 
+	
+
+}
+
+
+
+
+
+function find_public_images_query( $grub_ids, $order ) {
+
+$ids = join(',',$grub_ids);  
+
+$result = array();
+
+$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY timestamp(`time`) $order ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'image' => $row['image']);
+	
+	} 
+	return $result;
+
+
+}
+
+
+
+
+function find_grub_ids_by_settings() {
+
+$result = array();
+
+$query = mysql_query("SELECT `grub_id` FROM `image_data` WHERE `active` = 1 ORDER BY timestamp(`time`) DESC");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = $row['grub_id'];
+	
+	} 
+	return $result;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function get_locations(){
 
 	$name = array();
@@ -37,8 +133,11 @@ function non_drag_add_image($user_id, $file_temp, $file_ext, $file_name){
 	}	
 	
 	
+	date_default_timezone_set('America/Los_Angeles');
+	$time = date("Y-m-d h:i:sa", time()) ; 
+	
 		move_uploaded_file($file_temp, $random_name);
-		mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`) VALUES ('$user_id' , '$upload_name' , '$name' )");	 
+		mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`, `time`) VALUES ('$user_id' , '$upload_name' , '$name', '$time' )");	 
 
 		 $display_name = 'uploads/thumbs/'.$upload_name;
 		 echo ' Image Uploaded! <br> <img src="'.$display_name.'">';
@@ -85,6 +184,8 @@ if(!file_exists($fileloc)) {
 
 
 }
+
+
 
 
 
@@ -169,17 +270,20 @@ function add_image($image_id, $title, $location, $description){
 	$location = sanitize($location);
 	$description = sanitize($description);
 	
+	date_default_timezone_set('America/Los_Angeles');
+	$time = date("Y-m-d h:i:sa", time()) ; 
+	
 	
 	$query = mysql_query("SELECT COUNT(`grub_id`) from `image_data` WHERE `grub_id` = '$image_id' ");
 			
 		if( mysql_result($query,0)>=1) {
 			
-		mysql_query("UPDATE `image_data` SET `title` = '$title' , `location`= '$location' , `description` = '$description' WHERE `grub_id` = '$image_id' ");
+		mysql_query("UPDATE `image_data` SET `title` = '$title' , `location`= '$location' , `description` = '$description', `time` = '$time' WHERE `grub_id` = '$image_id' ");
 					
 	
 		} else{
 				
-		mysql_query("INSERT INTO `image_data` (`grub_id`, `title`, `location`, `description`) VALUES ('$image_id' , '$title' , '$location','$description')");
+		mysql_query("INSERT INTO `image_data` (`grub_id`, `title`, `location`, `description`, `time`) VALUES ('$image_id' , '$title' , '$location','$description', '$time' )");
 
 		} 
 	

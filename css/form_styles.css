@@ -85,3 +85,51 @@ html .ui-autocomplete1 { width:150px; } /* without this, the menu expands to 100
 	font:1em "Open Sans", sans-serif;
 	
 }
+
+
+.wrap {
+    width: 60%;
+}
+
+.wrap table {
+    width: 100%;
+    table-layout: fixed;
+     padding: 5px;
+}
+
+table tr td {
+    padding: 5px;
+    border: 1px solid #eee;
+
+    word-wrap: break-word;
+}
+
+table.head tr td {
+ 	padding: 5px;
+    background: #eee;
+}
+
+.inner_table {
+    height: 500px;
+    overflow-y: auto;
+    
+}
+.inner_table {
+    height: 500px;
+    overflow-y: auto;
+    
+}
+
+
+.inner_table_rec {
+    height: 300px;
+    overflow-y: auto;
+    
+}
+
+.wrap_rec table {
+    width: 100%;
+    table-layout: fixed;
+     padding: 5px;
+}
+

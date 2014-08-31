@@ -811,7 +811,9 @@ footer .footer-bottom {
 
 }
 
-
+.recommend{
+	border: 1px dashed #ccc;
+}
 
 footer .footer-bottom p {
 
