@@ -11,6 +11,7 @@ if(logged_in()===true) {
 	}
 ?> 
 
+<br>
 
 </aside>
         

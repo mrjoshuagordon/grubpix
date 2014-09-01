@@ -2,40 +2,183 @@
 include 'core/init.php';
 protect_page();
 include 'includes/overall/overallheader.php' ;
-require 'Gallery.php';
-$gallery = new Gallery();
-$gallery->setPath('./uploads/'); 
+
+$grub_ids = find_grub_ids_by_settings();
+
+//print_r($grub_ids);
+//die();
+
+//$order = 'ASC';
 
 
-$grub_ids = find_grub_ids();
 
-$public_images = find_public_images($grub_ids ) ; 
-$images = $gallery->getAllImages(array('jpg','png','jpeg','gif'), $public_images);
-
-
-?> 
-
-
-<h1> Grub Gallery </h1>
-<p> Public Grubs from All Users  </p>
+//print_r(image_data( $grub_ids[0]));
 
 
 
 
-<div class="container_gallery">
-			<?php if($images): ?>
-			<div class="gallery cf">
-				<?php  foreach($images as $image):  ?>
-				<div class="gallery-item">
-					<a href="<?php echo  'grubinfo.php?image='.end(explode('/',$image['full'])); ?> " ><img src="<?php echo $image['thumb'];  ?>"> </a> 
-				</div>
-				<?php endforeach;  ?>
-			</div>
-			<?php else: ?>
-				There are no images
-			<?php endif; ?>
-		</div>
+if(isset($_POST['peer-id'])) {
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'] ); 	
+	$result = get_setting_limit($session_user_id);
+	$limit = $result['limit'];
+	header('Location: grubgallery.php');
+	
+} else{
+
+	if(!empty(get_setting_limit($session_user_id)))  {
+			$result = get_setting_limit($session_user_id);
+			$limit = $result['limit'];
+		
+	
+	} else{
+	
+	$limit = 25;
+
+
+		}
+} 
+
+
+if(isset($_POST['sort-id'])) {
+
+	$_POST['sort-id'] == 'Newest' ? $order = 'DESC' : $order = 'ASC';
+
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order ); 	
+	$result = get_setting_limit($session_user_id);
+	$order = $result['order'];
+	header('Location: grubgallery.php');
+
+	
+	
+} else{
+
+	if(!empty(get_setting_limit($session_user_id)))  {
+			$result = get_setting_limit($session_user_id);
+			$order = $result['order'];
+			
+	
+	} else{
+	
+	$order = 'ASC';
+
+
+		}
+} 
+
+
+
+
+
+
+
+
+
+$images = find_public_images_query($grub_ids, $order); 
+
+
+//echo $order;
+
+
+$limits = [1,2,5,10,25,50,100,500,1000];
+?>
+
+<script>
+function change(){
+    document.getElementById("myform").submit();
+  
+}
+
+
+
+</script>
+
+
+
+<form id="myform" method="post">
+Grubs shown:  <select name = 'peer-id' onchange="change()" width="80" style="width: 80px" >
+	
+	<option><?php echo $limit; ?> </option>
+								<?php
+								for($i=1; $i<count($limits); $i++){
+								if($limits[$i] != $limit ) {
+								echo '<option>'.$limits[$i].'</option>' ;
+								}
+							}			?>
+	
+	
+</select>
+
+Show First:  <select name = 'sort-id' onchange="change()" width="100" style="width: 100px" >
+	
+	<!-- Code to change the sort by -->
+	 
+	<option><?php if($order != 'ASC') {  echo 'Newest';} else { 	echo 'Oldest'; }?>  </option>
+	<option> <?php if($order != 'ASC') {  echo 'Oldest';} else { echo 'Newest'; }?> </option>		
+	
+	
+</select>
+
+
+</form> 
+
+
+<br >
+
+
+
+<div class="wrap">
+    <table class="head">
+        <tr>
+            <td>Grub</td>
+            <td>Title</td>
+            <td>Description</td>
+        </tr>
+    </table>
+    <div class="inner_table">
+        <table> <?php 
+							for($i = 0; $i < min($limit, count($images)); $i++){
+						
+						 $image = $images[$i]['image']; 
+						$grub_id = image_id_from_imagename($image); 
+						$temp = image_data( $grub_id );	
+						
+						echo '<tr> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td>'. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						}
+					?>
+    </table>
+    </div>
+</div> 
+
+
+
+
+
+
+
+
+<?php
+
+/*
+<div style="height:500px ; overflow:auto;"> 
+<table id="grubsTable" class="comment_table" border="1" align="center">  
+
+
+echo   ' <tr> <td> Grub </td> <td> Title </td> <td> Detail </td> </tr>';
+
+for($i = 0; $i < count($images); $i++){
+	 $image = $images[$i]; 
+	echo '<tr> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td>test</td> <td>test</td> </tr>';
+}
+</table>
+</div>
+
+*/
+?>
+
+
 
 
 <?php include 'includes/overall/overallfooter.php'; ?> 
+
+
 

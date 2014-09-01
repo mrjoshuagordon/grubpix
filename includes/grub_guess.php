@@ -11,6 +11,15 @@
 
 
 	$output = find_overall_macros($image_id);
+	
+	!empty($result['calories']) ? $overall_calories = round($output['overall_calories'],2) :  $overall_calories = '?';
+ 	!empty($result['protein'])  ? $overall_protein = round($output['overall_protein'],2) :  $overall_protein = '?';
+	!empty($result['fat'])          ? $overall_fat = round($output['overall_fat'],2) :  $overall_fat = '?';
+ 	!empty($result['carbs'])       ? $overall_carbs = round($output['overall_carbs'],2) :  $overall_carbs = '?';
+	!empty($result['fiber'])      ? $overall_fiber = round($output['overall_fiber'],2) :  $overall_fiber = '?';
+	
+	
+	
 	//print_r($output);
 
 /*	
@@ -59,31 +68,31 @@
 		  <td width="150">Calories </td>
 		  <td width="150"><input name= "calories" type="range" min="0" max="3500" value="<?php echo $calorie_guess; ?>" step="10" onchange="showCaloriesValue(this.value)" /></td> 
 		  <td width="150"><span id="calories"> <?php  print_r($calorie_guess); ?></span></td>
-		  <td width="150"><?php print_r(round($output['overall_calories'],2));?></td>
+		  <td width="150"><?php echo $overall_calories ;?></td>
 		</tr>
 		<tr>
 		  <td width="150">Protein (grams) </td>
 		  <td width="150"> <input name= "protein" type="range" min="0" max="350" value="<?php echo $protein_guess; ?>" step="5" onchange="showProteinValue(this.value)" /></td> 
 		  <td width="150"><span id="protein"><?php  print_r($protein_guess); ?></span></td>
-		  <td width="150"><?php print_r(round($output['overall_protein'],2));?></td>
+		  <td width="150"><?php echo $overall_protein ;?></td>
 		</tr>
 		<tr>
 		  <td width="150">Fat (grams) </td>
 		  <td width="150"> <input name= "fat" type="range" min="0" max="200" value="<?php echo $fat_guess; ?>" step="5" onchange="showFatValue(this.value)" /></td> 
 		  <td width="150"><span id="fat"><?php  print_r($fat_guess); ?></span></td>
-		  <td width="150"><?php print_r(round($output['overall_fat'],2));?></td>
+		  <td width="150"><?php echo $overall_fat ;?></td>
 		</tr>
 		<tr>
 		  <td width="150">Carbs (grams) </td>
 		  <td width="150"> <input name= "carbs" type="range" min="0" max="500" value="<?php echo $carb_guess; ?>" step="5" onchange="showCarbValue(this.value)" /></td> 
 		  <td width="150"><span id="carbs"><?php  print_r($carb_guess); ?></span></td>
-		  <td width="150"><?php print_r(round($output['overall_carbs'],2));?></td>
+		  <td width="150"><?php echo $overall_carbs ;?></td>
 		</tr>
 		<tr>
 		  <td width="150">Fiber(grams) </td>
 		  <td width="150"> <input name= "fiber" type="range" min="0" max="50" value="<?php echo $fiber_guess; ?>" step="5" onchange="showFiberValue(this.value)" /></td> 
 		  <td width="150"><span id="fiber"><?php  print_r($fiber_guess); ?></span></td>
-		  <td width="150"><?php print_r(round($output['overall_fiber'],2));?></td>
+		  <td width="150"><?php echo $overall_fiber ;?></td>
 		</tr>
 		</table>
 		<input type="submit" name="macro-submit" value="Submit Guess" onclick="show_alert();" />

@@ -47,14 +47,14 @@ function user_setting_limit_input($user_id, $limit, $order){
 
 
 
-
+// user to find get the images returned the order specified by the user on the gallery page
 function find_public_images_query( $grub_ids, $order ) {
 
 $ids = join(',',$grub_ids);  
 
 $result = array();
 
-$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY timestamp(`time`) $order ");
+$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY `grub_id` $order ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	
@@ -204,7 +204,7 @@ function find_grub_ids () {
 
 $result = array();
 
-$query = mysql_query("SELECT `grub_id` FROM `image_data` WHERE `active` = 1");
+$query = mysql_query("SELECT `grub_id` FROM `image_data` WHERE `active` = 1 ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	
@@ -223,7 +223,7 @@ $ids = join(',',$grub_ids);
 
 $result = array();
 
-$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ");
+$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY `grub_id` DESC ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	

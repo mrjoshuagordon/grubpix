@@ -120,15 +120,17 @@ table.head tr td {
     
 }
 
-
 .inner_table_rec {
-    height: 300px;
+    height:  275px;
+    max-width: 400px;
     overflow-y: auto;
-    
+     
 }
+
 
 .wrap_rec table {
     width: 100%;
+    max-width: 400px;
     table-layout: fixed;
      padding: 5px;
 }

@@ -842,7 +842,7 @@ footer .footer-bottom p, footer .footer-bottom p a {
 } 
 
 .container_gallery{
-	max-width:350px;
+	max-width:60%;
 	padding:10px;
 	background:#f0f0f0;
 	margin:0 auto;
@@ -884,7 +884,7 @@ footer .footer-bottom p, footer .footer-bottom p a {
 
 	.width { width:auto; padding-left: 10px; padding-right: 10px; }
 	
-	#content, aside.sidebar { float:right; width: auto; }
+	#content, aside.sidebar { float:bottom; width: auto; }
 
 	footer .footer-content ul { width: auto; float: none; }
 }

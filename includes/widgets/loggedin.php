@@ -64,7 +64,8 @@
 	
 
 	
-	Recommended Grubs:
+	Recently Added Grubs:
+	
 	<div class="wrap_rec">
     <table class="head">
         <tr>

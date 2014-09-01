@@ -45,7 +45,7 @@ if(isset($_GET['success']) && empty($_GET['success'])){
 
 
 ?> 
-
+<div class="comment_container">
 
 	<form action="" method="post"> 
 			<ul > 
@@ -62,7 +62,7 @@ if(isset($_GET['success']) && empty($_GET['success'])){
 			</ul>
 		</form> 
 
-
+</div>
 
 <?php 
 
