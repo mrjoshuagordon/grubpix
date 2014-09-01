@@ -20,6 +20,8 @@ if( logged_in() === true ) {
 	$user_data = user_data($session_user_id , 'user_id', 'username', 'password', 'first_name', 'last_name', 
 	'email', 'password_recover','type', 'allow_email', 'profile','gender','age');
 	
+	$user_settings = user_settings($session_user_id, 'allow_first_name', 'allow_last_name', 'allow_email_profile', 'allow_gender', 'allow_age'); 
+	
 	if(user_active($user_data['username']) === false) {
 		session_destroy();
 		header('Location: index.php');

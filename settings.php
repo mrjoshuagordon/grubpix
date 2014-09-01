@@ -44,6 +44,14 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 	if(empty($_POST) === false && empty($errors) === true) {
 		$allow_email = ($_POST['allow_email'] == 'on') ? 1 : 0 ;
 	
+	
+		if(!empty($_POST['allow_first_name']) && $_POST['allow_first_name'] == 'on') { $allow_first_name  = 1 ; } else {$allow_first_name  = 0; }	
+		if(!empty($_POST['allow_last_name']) && $_POST['allow_last_name'] == 'on') { $allow_last_name  = 1 ; } else {$allow_last_name  = 0; }
+		if(!empty($_POST['allow_email_profile']) && $_POST['allow_email_profile'] == 'on') { $allow_email_profile  = 1 ; } else {$allow_email_profile  = 0; }
+		if(!empty($_POST['allow_gender']) && $_POST['allow_gender'] == 'on') { $allow_gender  = 1 ; } else {$allow_gender  = 0; }
+		if(!empty($_POST['allow_age']) && $_POST['allow_age'] == 'on') { $allow_age  = 1 ; } else {$allow_age  = 0; }
+				
+	
 		$update_data = array(
 		'first_name' 		=> $_POST['first_name'],
 		'last_name' 		=> $_POST['last_name'],
@@ -52,7 +60,22 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 		'age'				=> $_POST['age'],
 		'allow_email'		=> $allow_email
 		);
-	
+		
+		
+		$update_settings = array(
+		
+						
+		'allow_first_name' => $allow_first_name, 
+		'allow_last_name'  => $allow_last_name ,
+		'allow_email_profile' => $allow_email_profile,
+		'allow_gender' => $allow_gender,
+		'allow_age' => $allow_age
+		
+		
+		);
+		
+		
+		update_settings($_SESSION['user_id'],$update_settings);
 		update_user($_SESSION['user_id'],$update_data);
 		header('Location: settings.php?success');
 		exit();
@@ -62,28 +85,110 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 	}
 
 	?>
+<div id="mobile_settings">
+
+
+	<div class="inner">
+	<div class="profile">
+		<?php
+		
+		
+		$grub_ids = find_grub_ids();
+		$images =  find_public_images( $grub_ids );
+		
+	//	print_r($images[0]);
+	//	die();
+		
+		if(isset($_FILES['profile']) === true){
+				
+			if(empty($_FILES['profile']['name'])===true){
+			 	echo 'Please choose a file';
+			
+			} else{
+				$allowed = array('jpg','jpeg','gif','png');
+				
+				$file_name = $_FILES['profile']['name'];
+				$file_ext = strtolower(end(explode('.',$file_name)));
+				$file_temp = $_FILES['profile']['tmp_name'];
+				
+				if(in_array($file_ext, $allowed) === true){
+					
+					change_profile_image($session_user_id, $file_temp, $file_ext);
+					make_profile_thumbs();
+					header('Location: ' .$current_file);
+					exit();
+				} else{
+				
+					echo 'Incorrect file type. Allowed: ';
+					echo implode(', ', $allowed);
+				}
+				
+				
+				// need to limit file size
+				
+				
+			}
+						
+		}
+		
+			if(empty($user_data['profile']) === false){
+			 echo '<img src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile">';
+			
+			}
+		 ?>
+			 <form action="" method="post" enctype="multipart/form-data">
+			 <input type="file" name="profile"> <input type="submit">
+			 </form>
+	</div>
+		<ul>
+			<li>	<a href="logout.php">Logout</a> </li>
+			<li>	<a href="<?php echo $user_data['username']; ?>" > Your Profile</a>  </li>
+			<li>	<a href="changepassword.php">Change Password</a>  </li> 
+			<li>	<a href="settings.php">Settings</a>   </li>
+		</ul>	
+	
+	</div>	 
+	
+
+	
+
+
+</div>
 
 
 		<form action="" method="post"> 
 				<ul > 
-			
-					<li> First Name*:<br>
-						<input type="text" name="first_name" size="35" value="<?php echo $user_data['first_name']; ?>">  
-					</li>
-					<li> Last Name:<br>
-						<input type="text" name="last_name" size="35" value="<?php echo $user_data['last_name']; ?>">   
-					</li>
-					<li> Email*:<br>
-						<input type="text" name="email" size="35" value="<?php echo $user_data['email']; ?>">  
-					</li>
-					
-					<li>	
-					Gender: <select width="60" style="width: 100px" name="gender">
-								<option><?php echo $user_data['gender']; ?></option>
+			<table id="comment_table_settings">
+			  <tr>
+			  	<td width=100px>Setting </td>
+            	<td>Data</td>
+            	<td >Show on Profile?</td>            	
+        	</tr>
+        	  <tr>
+            	<td>First Name*:</td>
+            	<td><input type="text" name="first_name" size="25" value="<?php echo $user_data['first_name']; ?>">  </td>         	
+            	<td ><input type="checkbox" name="allow_first_name" <?php if($user_settings['allow_first_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+        	</tr>
+        	 <tr>
+            	<td>Last Name:</td>
+            	<td><input type="text" name="last_name" size="25" value="<?php echo $user_data['last_name']; ?>">  </td>         	
+            	<td><input type="checkbox" name="allow_last_name" <?php if($user_settings['allow_last_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+        	</tr>
+        	<tr>
+            	<td>Email*</td>
+            	<td><input type="text" name="email" size="25" value="<?php echo $user_data['email']; ?>">   </td>         	
+            	<td><input type="checkbox" name="allow_email_profile" <?php if($user_settings['allow_email_profile'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+        	</tr>
+        	<tr>
+            	<td>Gender</td>
+            	<td>
+            	
+            	<select width="60" style="width: 100px" name="gender">
+								<option><?php if(!empty($user_data['gender']))  {echo $temp_gender = $user_data['gender'] ;} else{ echo $temp_gender = 'Male';} ?></option>
 								
 								<?php  
 								
-								if($user_data['gender']=='Male') {
+								if($temp_gender =='Male') {
 								
 								echo '<option>Female</option>';
 								} else{
@@ -95,9 +200,16 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 							
 								
 							</select>
-					</li>
-					<li>	
-						Age: <select width="60" style="width: 60px" name="age">
+            	
+            	 </td>         	
+            	<td><input type="checkbox" name="allow_gender" <?php if($user_settings['allow_gender'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+        	</tr>
+        	
+        	<tr>
+            	<td>Age: </td>
+            	<td>
+            	
+            	<select width="60" style="width: 60px" name="age">
 								<option><?php echo $user_data['age']; ?></option>
 								<?php
 								for($i=1; $i<101; $i++){
@@ -105,11 +217,19 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 								echo '<option>'.$i.'</option>' ;
 								}
 							}			?>
-							</select>
-					</li>		
-					
+				</select>
+            	
+            	            	
+            	   </td>         	
+            	<td><input type="checkbox" name="allow_age" <?php if($user_settings['allow_age'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+        	</tr>
+        	
+        	
+			</table>
+			
+
 					<li> 
-						<input type="checkbox" name="allow_email" <?php if($user_data['allow_email'] == 1 ) {  echo 'checked="checked"' ; } ?> >  Would you like to receive email from us?
+					<input type="checkbox" name="allow_email" <?php if($user_data['allow_email'] == 1 ) {  echo 'checked="checked"' ; } ?> >  Would you like to receive email from us?
 					</li>
 				
 					
@@ -119,6 +239,8 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 				</ul>
 			</form>
   
+
+
 
 
 	<?php

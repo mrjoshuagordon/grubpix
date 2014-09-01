@@ -21,7 +21,7 @@ $images = $gallery->getImages(array('jpg','png','jpeg','gif'), $user_images);
 <h1> Grub Gallery </h1>
 <p> This is our forum page </p>
 
-<div class="container_gallery">
+<div id="container_gallery">
 			<?php if($images): ?>
 			<div class="gallery cf">
 				<?php  foreach($images as $image):  ?>

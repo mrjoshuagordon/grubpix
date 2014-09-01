@@ -1,4 +1,4 @@
-<div class="widget"> 
+<div id="widget"> 
 
 <h2> Hello <?php echo $user_data['first_name'] ;?> ! </h2>
 	<div class="inner">
@@ -64,8 +64,10 @@
 	
 
 	
-	Recently Added Grubs:
+
 	
+	<div id="rec"> 
+		Recently Added Grubs:
 	<div class="wrap_rec">
     <table class="head">
         <tr>
@@ -89,6 +91,7 @@
     </div>
 	</div> 
 	
+	</div>
 	
 	
 

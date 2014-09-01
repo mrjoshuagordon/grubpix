@@ -43,6 +43,14 @@
 		width: 100%;
 }
 
+.comment_table_settings {
+		
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 60%;
+}
+
 
 .table_container {
 		

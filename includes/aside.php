@@ -1,7 +1,9 @@
 
 <aside class="sidebar">
-
+<div id="login">
 <?php 
+
+
 
 
 if(logged_in()===true) {
@@ -10,7 +12,7 @@ if(logged_in()===true) {
 	include 'includes/widgets/login.php' ;
 	}
 ?> 
-
+</div>
 <br>
 
 </aside>

@@ -1,6 +1,77 @@
 <?php 
 
 
+function update_settings($user_id, $update_data) {
+
+	$update = array();
+	$insert = array();
+	$values = array();
+	
+	array_walk($update_data, 'array_sanitize');
+	
+	foreach($update_data as $field=>$data ) {
+		$update[] = '`' . $field . '` = \''. $data .'\''; 
+	}	
+
+
+	foreach($update_data as $field=>$data ) {
+		$insert[] = '`' . $field . '`';
+	}	
+	
+	foreach($update_data as $field=>$data ) {
+		$values[] = '\'' . $data . '\'';
+	}	
+	
+//	echo "INSERT INTO `user_settings` ( `user_id`,  " . implode(', ', $insert) . ") VALUES ( ".$user_id.", ". implode(', ', $values) .")";
+	
+	
+	
+	
+	$query = mysql_query("SELECT COUNT(`user_id`) from `user_settings` WHERE `user_id` = '$user_id'  "); 
+	
+		if( mysql_result($query,0)>=1) {
+	
+	mysql_query("UPDATE `user_settings` SET " . implode(', ', $update) . " WHERE `user_id` =  " . $user_id);	
+			} else{
+			
+	mysql_query("INSERT INTO `user_settings` ( `user_id`,  " . implode(', ', $insert) . ") VALUES ( ".$user_id.", ". implode(', ', $values) .")");	
+			
+			} 
+			
+	//		mysql_query("INSERT INTO `user_settings` (`user_id`, `image_view`, `order`) VALUES ('$user_id' , '$limit', '$order')");
+
+	
+	}
+
+
+
+
+
+
+function user_settings($user_id){
+	$data = array();
+	$user_id = (int)$user_id;
+	
+	$func_num_args = func_num_args();
+	$func_get_args = func_get_args();
+	
+	if($func_num_args > 1 ) {
+		unset($func_get_args[0]);
+		
+		$fields = '`'. implode('`, `',$func_get_args) . '`' ;
+		$data = mysql_fetch_assoc(mysql_query("SELECT $fields from `user_settings` WHERE `user_id` = $user_id"));
+		
+		return $data;	
+			
+	} 
+	
+
+
+}
+
+
+
+
 
 function get_active_users() {
 
