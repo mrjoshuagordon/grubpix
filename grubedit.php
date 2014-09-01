@@ -59,12 +59,12 @@ if(empty($_POST['Publish']) === false) {
 				
 			
 			if($allow_public === 1 ) {
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
+				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description'], $_POST['price'] );
 				publish_image($image_id);
 				header('Location: grubinfo.php?image='.$image); 
 				
 			} else{
-				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description']);
+				add_image($image_id, $_POST['title'], $_POST['location'], $_POST['description'],  $_POST['price'] );
 				header('Location: grubinfo.php?image='.$image); 
 				
 			
@@ -91,6 +91,7 @@ if(empty($_POST['Publish']) === false) {
 
 <?php
 
+
 	echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
 
 
@@ -101,7 +102,7 @@ if(empty($_POST['Publish']) === false) {
 <a href="./grubinfo.php?image=<?php echo $image?>"> Public View </a> 
 <h4> Please fill out the image details, fields marked with an * are required: </h4>
 
-<div class="form_container"> 	
+<div class="comment_container"> 	
 	<form action="" method="post" name="image_detail_form"> 
 		<ul > 
 			<label>
@@ -116,9 +117,14 @@ if(empty($_POST['Publish']) === false) {
  			<input id="location" type="text" name="location" value="<?php echo $image_data['location']; ?>" autocomplete="off"/> <span  style="background-color: #eceff0;" id="hold"> </span> <br>	
 				</div>
 				
+				<div width="200px"  >   Price ($):  <br>
+ 			<input id="price" type="text" name="price" value="<?php echo $image_data['price']; ?>" /> <br>	
+				</div>	
+				
+				
 				<?php  //add in dynamic drop down?>
 				<li> Description:<br>				
-				<textarea type="text" name="description"><?php echo $image_data['description']; ?></textarea> 
+				<textarea type="text" name="description" class="comment_container" ><?php echo $image_data['description']; ?></textarea> 
 				</li>
 								
 				<li> 

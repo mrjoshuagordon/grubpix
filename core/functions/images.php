@@ -264,26 +264,27 @@ function image_id_from_imagename($imagename){
 } 
 
 
-function add_image($image_id, $title, $location, $description){
+function add_image($image_id, $title, $location, $description, $price){
 
 	$title = sanitize($title);
 	$location = sanitize($location);
 	$description = sanitize($description);
+	$price = sanitize($price);
 	
 	date_default_timezone_set('America/Los_Angeles');
-	$time = date("Y-m-d h:i:sa", time()) ; 
+	$time = date("F j, Y", time()) ; 
 	
 	
 	$query = mysql_query("SELECT COUNT(`grub_id`) from `image_data` WHERE `grub_id` = '$image_id' ");
 			
 		if( mysql_result($query,0)>=1) {
 			
-		mysql_query("UPDATE `image_data` SET `title` = '$title' , `location`= '$location' , `description` = '$description', `time` = '$time' WHERE `grub_id` = '$image_id' ");
+		mysql_query("UPDATE `image_data` SET `title` = '$title' , `location`= '$location' , `description` = '$description', `price` = '$price', `time` = '$time' WHERE `grub_id` = '$image_id' ");
 					
 	
 		} else{
 				
-		mysql_query("INSERT INTO `image_data` (`grub_id`, `title`, `location`, `description`, `time`) VALUES ('$image_id' , '$title' , '$location','$description', '$time' )");
+		mysql_query("INSERT INTO `image_data` (`grub_id`, `title`, `location`, `description`, `price`, `time`) VALUES ('$image_id' , '$title' , '$location','$description', '$price', '$time' )");
 
 		} 
 	

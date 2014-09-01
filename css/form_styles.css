@@ -115,7 +115,8 @@ table.head tr td {
     
 }
 .inner_table {
-    height: 500px;
+	height:100%;
+    max-height: 800px;
     overflow-y: auto;
     
 }

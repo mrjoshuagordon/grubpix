@@ -21,13 +21,6 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
     $link  ='./uploads/'.$image;
 
 
-
-	echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
-
-	$image_id = image_id_from_imagename($image);
-	$image_data = image_data($image_id);
-	
-
 	
 }
 	
@@ -58,7 +51,11 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 	
 }
 
+echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
 
+	$image_id = image_id_from_imagename($image);
+	$image_data = image_data($image_id);
+	
 
 $user_id = user_id_from_imagename($image);
 

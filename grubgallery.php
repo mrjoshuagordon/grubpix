@@ -142,7 +142,7 @@ Show First:  <select name = 'sort-id' onchange="change()" width="100" style="wid
 						$grub_id = image_id_from_imagename($image); 
 						$temp = image_data( $grub_id );	
 						
-						echo '<tr> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td>'. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						echo '<tr onclick="window.location=\'./grubinfo.php?image='.$image.'\'"> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td> '. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
 						}
 					?>
     </table>

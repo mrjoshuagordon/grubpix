@@ -82,7 +82,7 @@
 						$grub_id = image_id_from_imagename($image); 
 						$temp = image_data( $grub_id );	
 						
-						echo '<tr> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td>'. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						echo '<tr href="grubinfo.php?image='.$image.'"> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td> '. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
 						}
 					?>
     </table>
@@ -94,4 +94,6 @@
 
 	
 </div>
+ 
+ 
  
