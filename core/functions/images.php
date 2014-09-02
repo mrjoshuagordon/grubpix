@@ -119,12 +119,17 @@ function get_locations(){
 
 function non_drag_add_image($user_id, $file_temp, $file_ext, $file_name){
 	$name = $file_name;
+	
+		do { 
 	$upload_name = substr(md5(time()),rand(0,9), rand(30,40)).'.' .$file_ext ;
 	$random_name = 'uploads/'.$upload_name;
-
+			} while(file_exists($random_name)); 
 	
 	
+	/*
 	$file_check = $random_name;
+	
+
 	
 	if(file_exists($file_check)){
 	$upload_name = substr(md5(time()),rand(0,9), rand(30,40)).'.'.$file_ext ;
@@ -132,7 +137,7 @@ function non_drag_add_image($user_id, $file_temp, $file_ext, $file_name){
 	
 	}	
 	
-	
+	*/
 	date_default_timezone_set('America/Los_Angeles');
 	$time = date("Y-m-d h:i:sa", time()) ; 
 	

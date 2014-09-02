@@ -31,7 +31,7 @@ if (empty($_POST) === false) {
 
 ?>
 
-<h2> Settings </h2>
+
 
 <?php 
 
@@ -39,11 +39,12 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 	echo 'Your details have changed';
 
 }  else{ 
-
+echo '<h2> Profile Data   ( * required ) </h2>';
 
 	if(empty($_POST) === false && empty($errors) === true) {
-		$allow_email = ($_POST['allow_email'] == 'on') ? 1 : 0 ;
-	
+	//	$allow_email = ($_POST['allow_email'] == 'on') ? 1 : 0 ;
+		if(!empty($_POST['allow_email']) && $_POST['allow_email'] == 'on') { $allow_email  = 1 ; } else {$allow_email  = 0; }	
+
 	
 		if(!empty($_POST['allow_first_name']) && $_POST['allow_first_name'] == 'on') { $allow_first_name  = 1 ; } else {$allow_first_name  = 0; }	
 		if(!empty($_POST['allow_last_name']) && $_POST['allow_last_name'] == 'on') { $allow_last_name  = 1 ; } else {$allow_last_name  = 0; }
@@ -96,8 +97,7 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 		$grub_ids = find_grub_ids();
 		$images =  find_public_images( $grub_ids );
 		
-	//	print_r($images[0]);
-	//	die();
+
 		
 		if(isset($_FILES['profile']) === true){
 				
@@ -159,29 +159,45 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 		<form action="" method="post"> 
 				<ul > 
 			<table id="comment_table_settings">
-			  <tr>
-			  	<td width=100px>Setting </td>
+			  <tr class="settings-header"'>
+			  	<td class="settings-label" > Setting </td>
             	<td>Data</td>
             	<td >Show on Profile?</td>            	
         	</tr>
         	  <tr>
-            	<td>First Name*:</td>
-            	<td><input type="text" name="first_name" size="25" value="<?php echo $user_data['first_name']; ?>">  </td>         	
-            	<td ><input type="checkbox" name="allow_first_name" <?php if($user_settings['allow_first_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+            	<td class="settings-label" >First Name<sup>*</sup>:</td>
+            	<td class="settings-input" ><input type="text" name="first_name" size="25" value="<?php echo $user_data['first_name']; ?>">  </td>         	
+            	<td >
+            	
+            	     <input class="checkbox1" type="checkbox" name="allow_first_name" <?php if($user_settings['allow_first_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_first_name"><span></span></label>
+
+            	</td>            	
         	</tr>
         	 <tr>
-            	<td>Last Name:</td>
-            	<td><input type="text" name="last_name" size="25" value="<?php echo $user_data['last_name']; ?>">  </td>         	
-            	<td><input type="checkbox" name="allow_last_name" <?php if($user_settings['allow_last_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
-        	</tr>
-        	<tr>
-            	<td>Email*</td>
-            	<td><input type="text" name="email" size="25" value="<?php echo $user_data['email']; ?>">   </td>         	
-            	<td><input type="checkbox" name="allow_email_profile" <?php if($user_settings['allow_email_profile'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
-        	</tr>
-        	<tr>
-            	<td>Gender</td>
+            	<td class="settings-label" >Last Name:</td>
+            	<td class="settings-input"><input type="text" name="last_name" size="25" value="<?php echo $user_data['last_name']; ?>">  </td>         	
             	<td>
+            	
+            	
+     <input class="checkbox1" type="checkbox" name="allow_last_name" <?php if($user_settings['allow_last_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_last_name"><span></span></label>
+
+            	
+            	
+            	</td>            	
+        	</tr>
+        	<tr>
+            	<td class="settings-label" >Email<sup>*</sup>:</td>
+            	<td class="settings-input"><input type="text" name="email" size="25" value="<?php echo $user_data['email']; ?>">   </td>         	
+            	<td>
+            	
+   <input class="checkbox1" type="checkbox" name="allow_email_profile" <?php if($user_settings['allow_email_profile'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_email_profile"><span></span></label>
+            	
+            	
+            	</td>            	
+        	</tr>
+        	<tr>
+            	<td class="settings-label" >Gender</td>
+            	<td class="settings-input">
             	
             	<select width="60" style="width: 100px" name="gender">
 								<option><?php if(!empty($user_data['gender']))  {echo $temp_gender = $user_data['gender'] ;} else{ echo $temp_gender = 'Male';} ?></option>
@@ -202,12 +218,16 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 							</select>
             	
             	 </td>         	
-            	<td><input type="checkbox" name="allow_gender" <?php if($user_settings['allow_gender'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+            	<td>
+   <input class="checkbox1" type="checkbox" name="allow_gender" <?php if($user_settings['allow_gender'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_gender"><span></span></label>
+
+
+            	</td>            	
         	</tr>
         	
         	<tr>
-            	<td>Age: </td>
-            	<td>
+            	<td class="settings-label" >Age: </td>
+            	<td class="settings-input">
             	
             	<select width="60" style="width: 60px" name="age">
 								<option><?php echo $user_data['age']; ?></option>
@@ -221,16 +241,31 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
             	
             	            	
             	   </td>         	
-            	<td><input type="checkbox" name="allow_age" <?php if($user_settings['allow_age'] == '1' ) {  echo 'checked="checked"' ; } ?> ></td>            	
+            	<td>
+            	
+
+       					 <input class="checkbox1" type="checkbox" name="allow_age" <?php if($user_settings['allow_age'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_age"><span></span></label>
+      				
+            	
+            </td>            	
+
         	</tr>
         	
         	
-			</table>
+        	
+
+        	
+			
 			
 
-					<li> 
-					<input type="checkbox" name="allow_email" <?php if($user_data['allow_email'] == 1 ) {  echo 'checked="checked"' ; } ?> >  Would you like to receive email from us?
-					</li>
+				<tr>
+				<td class="settings-label" colspan="2">  Would you like to receive email from us? </td>
+				
+				<td >  <input class="checkbox1" type="checkbox" name="allow_email" <?php if($user_data['allow_email'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_email"><span></span></label> </td>
+
+				</tr>
+       			</table>	
+					
 				
 					
 					<li> 
@@ -239,6 +274,11 @@ if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 				</ul>
 			</form>
   
+
+        	  <section title=".squaredFour">
+    <!-- .squaredFour -->
+   
+    <!-- end .squaredFour -->
 
 
 

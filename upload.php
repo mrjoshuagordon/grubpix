@@ -21,10 +21,13 @@ if(!empty($_FILES['file']['name'][0])){
 	
 	$file_check = 'uploads/'.$random_name;
 	
-	if(file_exists($file_check)){
-		$random_name = substr(md5(time()),rand(0,9), rand(30,40)).'.'.$file_ext;
+	//generate a unique while name using a do while loop.
+		
+		do{
+		$random_name = substr(md5(time()),rand(0,9), rand(20,40)).'.'.$file_ext;
+		$file_check = 'uploads/'.$random_name;
+		}  while(file_exists($file_check));
 	
-	}  else {
 	
 
 
@@ -57,7 +60,7 @@ if(!empty($_FILES['file']['name'][0])){
 	}
 		
 	
-	}
+	
 	
 	} //end foreach
 }
