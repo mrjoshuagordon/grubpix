@@ -24,7 +24,7 @@
 
 
 .comment_container {
-		
+		margin-top:10px;
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
@@ -41,7 +41,7 @@
 }
 
 .comment_table {
-		
+		margin-top:10px;
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
@@ -59,7 +59,7 @@
 
 
 .table_container {
-		
+		margin-top:10px;
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;

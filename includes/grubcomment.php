@@ -8,7 +8,7 @@
 
 
 
-<div class="comment_container">
+<div class="comment_table">
 
 <h4> Enter a comment: </h4>
 
@@ -74,12 +74,11 @@ if(strlen($comment) > 255) {
 <form action="" method="POST"> 
 
 
-<textarea name="comment"></textarea>  <br>
 
 
+<textarea class="textarea-style" name="comment"></textarea>  <br>
 
-
-<input type="Submit" value="Comment" name="comment_submit">  
+<input class="comment-submit" type="Submit" value="Comment" name="comment_submit">  
 	
 
 			
@@ -89,7 +88,7 @@ if(strlen($comment) > 255) {
 
 </div>						
 
-<div class="comment_container">
+<div class="table_container">
 <h4> User Comments: </h4>
 
 

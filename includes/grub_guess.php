@@ -55,50 +55,51 @@
 
 <div class="table_container">
 	<h4> Guess the Calories of this Grub! </h4> 
-	Users Guessed: <?php echo find_number_of_guesses($image_id);?>
+	 <h5> Users Guessed: <?php echo find_number_of_guesses($image_id);?> </h5>
 	<form name="macroForm" method="post"> 
-		<table border="1" style="width:100%">
+		<table class="grub_guess_table" border="1" style="width:100%">
 		<tr>
-		  <td width="150"> Energy Type: </td>
-		  <td width="150">Slide to Guess:</td> 
-		  <td width="150">Your Guess:</td>
-		   <td width="150">Overall:</td>
+		  <td class="guess-header"> Energy Type: </td>
+		  <td class="guess-header">Slide to Guess:</td> 
+		  <td class="guess-header">Your Guess:</td>
+		  <td class="guess-header">Overall:</td>
 		</tr>
 		<tr>
-		  <td width="150">Calories </td>
+		  <td class="guess-type">Calories </td>
 		  <td width="150"><input name= "calories" type="range" min="0" max="3500" value="<?php echo $calorie_guess; ?>" step="10" onchange="showCaloriesValue(this.value)" /></td> 
 		  <td width="150"><span id="calories"> <?php  print_r($calorie_guess); ?></span></td>
 		  <td width="150"><?php echo $overall_calories ;?></td>
 		</tr>
 		<tr>
-		  <td width="150">Protein (grams) </td>
+		  <td class="guess-type">Protein (grams) </td>
 		  <td width="150"> <input name= "protein" type="range" min="0" max="350" value="<?php echo $protein_guess; ?>" step="5" onchange="showProteinValue(this.value)" /></td> 
 		  <td width="150"><span id="protein"><?php  print_r($protein_guess); ?></span></td>
 		  <td width="150"><?php echo $overall_protein ;?></td>
 		</tr>
 		<tr>
-		  <td width="150">Fat (grams) </td>
+		  <td class="guess-type">Fat (grams) </td>
 		  <td width="150"> <input name= "fat" type="range" min="0" max="200" value="<?php echo $fat_guess; ?>" step="5" onchange="showFatValue(this.value)" /></td> 
 		  <td width="150"><span id="fat"><?php  print_r($fat_guess); ?></span></td>
 		  <td width="150"><?php echo $overall_fat ;?></td>
 		</tr>
 		<tr>
-		  <td width="150">Carbs (grams) </td>
+		  <td class="guess-type">Carbs (grams) </td>
 		  <td width="150"> <input name= "carbs" type="range" min="0" max="500" value="<?php echo $carb_guess; ?>" step="5" onchange="showCarbValue(this.value)" /></td> 
 		  <td width="150"><span id="carbs"><?php  print_r($carb_guess); ?></span></td>
 		  <td width="150"><?php echo $overall_carbs ;?></td>
 		</tr>
 		<tr>
-		  <td width="150">Fiber(grams) </td>
+		  <td class="guess-type">Fiber(grams) </td>
 		  <td width="150"> <input name= "fiber" type="range" min="0" max="50" value="<?php echo $fiber_guess; ?>" step="5" onchange="showFiberValue(this.value)" /></td> 
 		  <td width="150"><span id="fiber"><?php  print_r($fiber_guess); ?></span></td>
 		  <td width="150"><?php echo $overall_fiber ;?></td>
 		</tr>
+		<tr>
+		  <td class="guess-type" colspan="4">	<input type="submit" name="macro-submit" value="Submit Guess" onclick="show_alert();" /> </td>
+		</tr>
 		</table>
-		<input type="submit" name="macro-submit" value="Submit Guess" onclick="show_alert();" />
 	</form>
 </div>
-<br/ >
 
 <script>
     function show_alert(){

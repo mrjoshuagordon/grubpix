@@ -5,6 +5,7 @@
 @import "foundation.min.css";
 @import "normalize.css";
 @import "checkbox.css";
+@import "tables.css";
 
 body {
 
@@ -45,14 +46,14 @@ th, td {
 
 
 tr:nth-child(2n+0) td{
-	background-color: #fff;
+	background-color: #F4F4FF ;
 
 }
 
 td {
 
 	border-bottom: 1px solid #ccc;
-	background-color: #F4F4FF
+	background-color: #fff;
 
 }
 
@@ -128,9 +129,24 @@ h4 {
     color: #134F73; /*darker blue*/
     font-size: 1.2em;
     font-weight: normal;
-    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-bottom: 1px;
+    
 
 }
+
+
+
+h5 {
+    color: #FF544A; /*Pink*/
+    font-size: 1em;
+    font-weight: normal;
+    padding-left: 5px;
+    padding-bottom: 1px;
+    
+
+}
+
 
 
 ul, ol {
@@ -291,39 +307,9 @@ nav ul li a:hover {
 
 
 
-table#comment_table_settings td.settings-input, td.settings-label{
-	text-align: left;
-	padding-left:30px;
-}
-
-table#comment_table_settings tr.settings-header{
-		font-weight: bold;
-}
-
-table#comment_table_settings td.settings-input input{
-		border:1;
-		border-bottom: 2px solid #ccc;
-		padding-top: 5px;
-		padding-left: 15px ;
-		padding-bottom: 5px;
-}
 
 
 
-table.image_detail_table_settings td.image-detail-title{
-		font-weight: bold;
-		text-align: left;
-		padding-left:30px;
-		
-}
-
-
-
-table.image_detail_table_settings td.image-detail-data{
-		
-		text-align: left;
-		padding-left:30px;
-}
 
 .sidebar {
     float:right;

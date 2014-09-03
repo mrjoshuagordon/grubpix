@@ -1,5 +1,6 @@
  	 <a href = " <?php echo 'grubedit.php?image='.$image ;?> " > Edit Details </a> 
  
+ <div class="comment_container">
   <table class="image_detail_table_settings ">
 
 	<tr>
@@ -24,7 +25,7 @@
 	</tr>
   </table>
 
-
+</div>
 
 
 <?php

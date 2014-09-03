@@ -30,11 +30,17 @@ $name_directions = get_recipe_name_and_directions($recipe_id);
 
 <span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Show Recipe</a> </span>
  
+ 
 <table id="directionsTable" class="comment_table" border="1" align="center" style="display:none"> 
-<tr> <td> <b> Recipe Name:  </b> <?php echo  $name_directions['recipe_name']; ?> </td><tr>
-<tr> <td> <b> Directions: </b> <br> <?php echo  $name_directions['recipe_directions']; ?> </td><tr>
+<tr> 
+	<td class="directions-title"> Recipe Name:    </td> 
+	<td class="directions-content" colspan="2"><?php echo  $name_directions['recipe_name']; ?> </td>
+</tr>
+<tr> 
+	<td class="directions-title">  Directions: </td> 
+	<td class="directions-content" colspan="2"> <?php echo  $name_directions['recipe_directions']; ?></td>
+</tr>
 </table>
-<br>
 
 <table id="recipeTable" class="comment_table" border="1" align="center" style="display:none">  
 
@@ -55,4 +61,3 @@ for($i = 0; $i < count($recipe_data ); $i++){
 ?>
 
 </table>
-</br>

@@ -1,0 +1,120 @@
+table.grub_guess_table td.guess-header{
+		font-weight: bold;
+		text-align: center;
+		padding-left:30px;
+		font-size: 120%;
+		
+		
+}
+
+table.grub_guess_table td.guess-type{
+		font-weight: bold;
+		
+		text-align: left;
+		padding-left:30px;
+		width: 20%;
+		
+}
+
+input.submit-button{
+	background-color:#fff;
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+	width:100%;
+	margin-top:10px;
+	box-shadow: 3px 3px 0 #ddd;
+
+}
+
+
+div.rating-div{
+		font-weight: bold;
+		padding-left:30px;
+		
+}
+
+input.comment-submit{
+		color: #666;
+		font-weight: bold;		
+		text-align: center;
+		margin-left:30px;
+		margin-bottom:5px;	
+		min-width: 250px;
+		min-width: 350px;
+		margin-right: 10px;
+		
+		
+}
+
+textarea.textarea-style {
+	width: 90%;
+	height: 100px;
+	padding: 5px 10px;
+	margin-left:30px;
+
+}
+
+
+
+
+
+table#comment_table_settings td.settings-input, td.settings-label{
+	text-align: left;
+	padding-left:30px;
+}
+
+table#comment_table_settings tr.settings-header{
+		font-weight: bold;
+}
+
+table#comment_table_settings td.settings-input input{
+		border:1;
+		border-bottom: 2px solid #ccc;
+		padding-top: 5px;
+		padding-left: 15px ;
+		padding-bottom: 5px;
+}
+
+
+
+table.image_detail_table_settings td.image-detail-title{
+		font-weight: bold;
+		text-align: left;
+		padding-left:30px;
+		
+}
+
+
+
+table.image_detail_table_settings td.image-detail-data{
+		
+		text-align: left;
+		padding-left:30px;
+}
+
+
+table.image_detail_table_settings {
+	width:100%;
+}
+
+
+table#directionsTable  {
+
+		margin-bottom:10px;
+}
+
+
+table#directionsTable td.directions-title {
+		font-weight: bold;
+		text-align: left;
+		padding-left:30px;
+		width:200px;
+}
+
+table#directionsTable td.directions-content {
+	
+		text-align: left;
+		padding-left:10px;
+		margin-bottom:10px;
+}
+
