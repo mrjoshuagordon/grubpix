@@ -34,7 +34,7 @@ $query = mysql_query("SELECT * FROM `grub_comment` WHERE `grub_id` = '$image_id'
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	
 
-		$result[] = array($row['username'], $row['comment']);
+		$result[] = array('username' => $row['username'], 'comment' => $row['comment']);
 	
 	} 
 	return $result;

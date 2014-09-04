@@ -118,3 +118,40 @@ table#directionsTable td.directions-content {
 		margin-bottom:10px;
 }
 
+
+
+
+
+table.comment_table td.comment-user{
+	text-align: center;
+	font-weight: bold;
+	text-transform: capitalize;
+	width:30%
+	
+
+}
+
+table.comment_table td.comment-user img{
+	width:50px;
+	padding-right:20px;
+	
+
+}
+
+
+table.comment_table td.comment-text{
+	text-align: left;
+	padding-left:30px;
+	font-style: italic;
+
+}
+
+
+table.comment_table td.comment-header{
+		text-align: center;
+		font-weight: bold;
+		font-size: 120%;
+
+}
+
+

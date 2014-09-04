@@ -2,6 +2,40 @@
 
 
 
+function find_profile($user_id){
+
+
+$result = array();
+
+$query = mysql_query("SELECT * FROM `users` WHERE `user_id` = '$user_id'  ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'profile' => $row['profile']);
+	
+	} 
+	return $result[0];
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function get_setting_limit($user_id) {
 
 

@@ -49,14 +49,22 @@ $name_directions = get_recipe_name_and_directions($recipe_id);
 
 
 $recipe_data = find_recipe_data($recipe_id);
-//print_r($recipe_data );
+
+
 
 echo   ' <tr> <td> Ingredient </td> <td> Amount </td> <td> Unit </td> </tr>';
-for($i = 0; $i < count($recipe_data ); $i++){
-	$id[] = $recipe_data[$i]['ingredient_id'];
-	echo '<tr> <td>'.  $recipe_data[$i]['ingredient_name'].'</td> <td>'. $recipe_data[$i]['amount'] . '</td> <td>'. $recipe_data[$i]['unit'] . '</td> </tr>';
-}
 
+	if(!empty($recipe_data)) {
+
+for($i = 0; $i < count($recipe_data ); $i++){
+//	$id[] = $recipe_data[$i]['ingredient_id'];
+	echo '<tr> <td>'.  $recipe_data[$i]['ingredient_name'].'</td> <td>'. $recipe_data[$i]['amount'] . '</td> <td>'. $recipe_data[$i]['unit'] . '</td> </tr>';
+	}
+
+} else{
+	
+	echo '<tr> <td> <b>'.  '?' .' </b> </td> <td> <b>'.  '?' . ' </b></td> <td> <b>'.  '?' . '</b></td> </tr>';
+	}
 
 ?>
 
