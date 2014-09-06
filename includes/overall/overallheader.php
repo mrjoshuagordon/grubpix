@@ -8,13 +8,12 @@
 
 <body>
 
-<div id="container" class="width">
+<div id="container">
   
 
 	<?php include 'includes/header.php' ?>
 
 
+
+
 <div id="body">
-
-
-	<?php include 'includes/aside.php' ?>

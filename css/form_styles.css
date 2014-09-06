@@ -11,7 +11,7 @@
 
 
 .grub_info img{
-	width:60%;
+	width:90%;
 
 
 }
@@ -28,7 +28,7 @@
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
-		width: 60%;
+		width: 100%;
 }
 
 
@@ -39,6 +39,16 @@
 		border-collapse: collapse;
 		width: 100%;
 }
+
+.comment_output_table {
+		
+		background-color: #F4F4FF;
+		border-collapse: collapse;
+		width: 100%;
+		margin-bottom:5px;
+}
+
+
 
 .comment_table {
 		margin-top:10px;
@@ -53,7 +63,7 @@
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
-		width: 60%;
+		width: 100%;
 }
 
 
@@ -102,13 +112,13 @@ html .ui-autocomplete1 { width:150px; } /* without this, the menu expands to 100
 
 
 .wrap {
-    width: 60%;
+    width: 100%;
 }
 
 .wrap table {
     width: 100%;
     table-layout: fixed;
-     padding: 5px;
+
 }
 
 table tr td {
@@ -136,9 +146,10 @@ table.head tr td {
 }
 
 .inner_table_rec {
-    height:  275px;
+    height:  225px;
     max-width: 400px;
     overflow-y: auto;
+    font-size:80%;
      
 }
 
@@ -149,6 +160,9 @@ table.head tr td {
     table-layout: fixed;
      padding: 5px;
 }
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-<div id="widget"> 
+<div> 
 
 <h2> Hello <?php echo $user_data['first_name'] ;?> ! </h2>
 	<div class="inner">
@@ -28,7 +28,7 @@
 					
 					change_profile_image($session_user_id, $file_temp, $file_ext);
 					make_profile_thumbs();
-					header('Location: ' .$current_file);
+			//		header('Location: ' .$current_file);
 					exit();
 				} else{
 				
@@ -84,7 +84,7 @@
 						$grub_id = image_id_from_imagename($image); 
 						$temp = image_data( $grub_id );	
 						
-						echo '<tr href="grubinfo.php?image='.$image.'"> <td> <a href="grubinfo.php?image='.$image.'"><img src="uploads/thumbs/'.$image.'"></img></a></td> <td> '. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						echo '<tr href="grubinfo.php?image='.$image.'"> <td> <a href="grubinfo.php?image='.$image.'"><img id="grub-rec-widget" src="uploads/thumbs/'.$image.'"></img></a></td> <td> '. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
 						}
 					?>
     </table>

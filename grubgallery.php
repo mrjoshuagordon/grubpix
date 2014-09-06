@@ -21,7 +21,7 @@ if(isset($_POST['peer-id'])) {
 	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'] ); 	
 	$result = get_setting_limit($session_user_id);
 	$limit = $result['limit'];
-	header('Location: grubgallery.php');
+	//header('Location: grubgallery.php');
 	
 } else{
 

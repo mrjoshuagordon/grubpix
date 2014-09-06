@@ -51,7 +51,7 @@ if(isset($_GET['image']) && !empty($_GET['image'])){
 	
 }
 
-echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
+echo ' <div class="grub_info">  <a href='.$link.'> <img id="grub-main" src='.$link.'> </a> </div> <br>'; 
 
 	$image_id = image_id_from_imagename($image);
 	$image_data = image_data($image_id);

@@ -13,7 +13,7 @@ if(logged_in()===true) {
 	}
 ?> 
 </div>
-<br>
+
 
 </aside>
         

@@ -101,7 +101,13 @@ table.image_detail_table_settings {
 table#directionsTable  {
 
 		margin-bottom:10px;
+		width: 100%;
 }
+
+table#recipeTable  {
+		width: 100%;
+}
+
 
 
 table#directionsTable td.directions-title {
@@ -122,6 +128,8 @@ table#directionsTable td.directions-content {
 
 
 
+
+
 table.comment_table td.comment-user{
 	text-align: center;
 	font-weight: bold;
@@ -129,6 +137,11 @@ table.comment_table td.comment-user{
 	width:30%
 	
 
+}
+
+
+img#comment-profile{
+border: 0px;
 }
 
 table.comment_table td.comment-user img{
@@ -154,4 +167,36 @@ table.comment_table td.comment-header{
 
 }
 
+img#grub-main,  img#grub-main-edit {
+ border-radius: 10px;
+ border: 2px solid #A89F96;
+}
 
+
+img#grub-rec-widget{
+height: 50px;
+
+
+}
+
+
+
+select#BX_gender{
+width:150px;
+
+}
+
+
+form#image_detail_form{
+	margin-bottom:5px;
+}
+
+input#recipe-submit{
+	margin-top:5px;
+}
+
+
+
+table.head{
+font-size: 80%;
+}

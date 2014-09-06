@@ -92,7 +92,7 @@ if(empty($_POST['Publish']) === false) {
 <?php
 
 
-	echo ' <div class="grub_info">  <a href='.$link.'> <img src='.$link.'> </a> </div> <br>'; 
+	echo ' <div class="grub_info">  <a href='.$link.'> <img id="grub-main-edit" src='.$link.'> </a> </div> <br>'; 
 
 
 ?> 
@@ -103,7 +103,7 @@ if(empty($_POST['Publish']) === false) {
 <h4> Please fill out the image details, fields marked with an * are required: </h4>
 
 <div class="comment_container"> 	
-	<form action="" method="post" name="image_detail_form"> 
+	<form action="" method="post" name="image_detail_form" id="image_detail_form"> 
 		<ul > 
 			<label>
 				<li> Image Title*:<br>
@@ -124,7 +124,7 @@ if(empty($_POST['Publish']) === false) {
 				
 				<?php  //add in dynamic drop down?>
 				<li> Description:<br>				
-				<textarea type="text" name="description" class="comment_container" ><?php echo $image_data['description']; ?></textarea> 
+				<textarea type="text" name="description" class="comment_container_textarea" ><?php echo $image_data['description']; ?></textarea> 
 				</li>
 								
 				<li> 
@@ -139,7 +139,7 @@ if(empty($_POST['Publish']) === false) {
 	</form> 
 </div>
 
-
+<br/>
 
 
 <?php  include 'includes/usersgrub.php' ;

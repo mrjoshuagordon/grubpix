@@ -116,7 +116,7 @@ for($i = 0; $i < count($comments) ; $i ++ ) {
 	
 	$profile = 'images/profile/thumbs/'.end(explode('/',$temp['profile']));
 	
-	echo '<tr> <td class="comment-user"> <a href="./'.$comments[$i]['username'].'"><img src="'.$profile.'">'.  $comments[$i]['username'].'</a></td> <td class="comment-text">'. $comments[$i]['comment'] . '</td> </tr>';
+	echo '<tr> <td class="comment-user"> <a href="./'.$comments[$i]['username'].'"><img id="comment-profile" src="'.$profile.'">'.  $comments[$i]['username'].'</a></td> <td class="comment-text">'. $comments[$i]['comment'] . '</td> </tr>';
 }
 
 

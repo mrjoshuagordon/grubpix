@@ -78,7 +78,7 @@ $get_recipe_directions = empty($get_recipe['recipe_directions']) ? "" :  $get_re
 
 
 
-<div class="comment_output">
+<div class="comment_output_table">
 
 <table class="comment_table">
 <?php
@@ -127,7 +127,7 @@ echo '</form>'
 	<label for="BX_age">Amount</label>
 	<input type="text" class="small"  name="BX_Amount[]">
 	</td>
-	<td>
+	<td id="unit-selector">
 	<label for="BX_gender">Units</label>
 	<select id="BX_gender" name="BX_Unit[]">
 		<option>....</option>
@@ -143,7 +143,7 @@ echo '</form>'
  </tbody>
 </table>
 
-  <input type="Submit" value="Submit Recipe" name="submit_recipe">    
+  <input type="Submit" value="Submit Recipe" name="submit_recipe" id="recipe-submit">    
   
   	</form> 
 

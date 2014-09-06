@@ -6,7 +6,7 @@ function toggleTable() {
         var dTable = document.getElementById("directionsTable");
    			 dTable.style.display = (dTable.style.display == "table") ? "none" : "table";
    			 
-   	  document.getElementById('recipe').innerHTML = '<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Hide Recipe</a> </span>';
+   	  document.getElementById('recipe').innerHTML = '<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Recipe</a> </span>';
 }
 
 
@@ -25,10 +25,20 @@ $recipe_id =  $recipe_result['recipe_id'] ;
 $name_directions = get_recipe_name_and_directions($recipe_id);
 //print_r($name_directions);
 
-?>
-  
 
-<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Show Recipe</a> </span>
+//only show recipe toggle if recipe id exists
+if($recipe_id > 1) { 
+
+
+?>
+ <span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Show Recipe</a> </span> 
+  
+  <?php
+  }
+  
+  ?>
+
+
  
  
 <table id="directionsTable" class="comment_table" border="1" align="center" style="display:none"> 
