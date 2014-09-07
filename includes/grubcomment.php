@@ -8,7 +8,7 @@
 
 
 
-<div class="comment_table">
+<div class="comment_table-grubinfo">
 
 <h4> Enter a comment: </h4>
 

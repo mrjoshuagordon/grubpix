@@ -11,7 +11,7 @@
 
 
 .grub_info img{
-	width:90%;
+	width:55%;
 
 
 }
@@ -28,8 +28,9 @@
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
-		width: 100%;
+		width: 60%;
 }
+
 
 
 .comment_output {
@@ -44,7 +45,7 @@
 		
 		background-color: #F4F4FF;
 		border-collapse: collapse;
-		width: 100%;
+		width: 60%;
 		margin-bottom:5px;
 }
 
@@ -57,6 +58,16 @@
 		border-collapse: collapse;
 		width: 100%;
 }
+
+.comment_table-grubinfo {
+		margin-top:10px;
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 60%;
+}
+
+
 
 .comment_table_settings {
 		
@@ -73,7 +84,7 @@
 		background-color: #F4F4FF;
 		border: solid 1px #000;
 		border-collapse: collapse;
-		width: 100%;
+		width: 60%;
 }
 
  /* http://docs.jquery.com/UI/Autocomplete#theming*/
@@ -112,13 +123,14 @@ html .ui-autocomplete1 { width:150px; } /* without this, the menu expands to 100
 
 
 .wrap {
-    width: 100%;
+    width: 60%;
+      margin-right:15px;
 }
 
 .wrap table {
     width: 100%;
     table-layout: fixed;
-
+  margin-right:15px;
 }
 
 table tr td {
@@ -126,6 +138,11 @@ table tr td {
     border: 1px solid #eee;
 
     word-wrap: break-word;
+}
+
+.wrap_rec{
+
+  margin-right:15px;
 }
 
 table.head tr td {
@@ -159,6 +176,7 @@ table.head tr td {
     max-width: 400px;
     table-layout: fixed;
      padding: 5px;
+     margin-right:15px;
 }
 
 

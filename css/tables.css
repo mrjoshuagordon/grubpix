@@ -58,6 +58,7 @@ textarea.textarea-style {
 
 
 
+
 table#comment_table_settings td.settings-input, td.settings-label{
 	text-align: left;
 	padding-left:30px;
@@ -77,35 +78,21 @@ table#comment_table_settings td.settings-input input{
 
 
 
-table.image_detail_table_settings td.image-detail-title{
-		font-weight: bold;
-		text-align: left;
-		padding-left:30px;
-		
-}
 
 
 
-table.image_detail_table_settings td.image-detail-data{
-		
-		text-align: left;
-		padding-left:30px;
-}
 
 
-table.image_detail_table_settings {
-	width:100%;
-}
 
 
 table#directionsTable  {
 
 		margin-bottom:10px;
-		width: 100%;
+		width: 60%;
 }
 
 table#recipeTable  {
-		width: 100%;
+		width: 60%;
 }
 
 
@@ -200,3 +187,83 @@ input#recipe-submit{
 table.head{
 font-size: 80%;
 }
+
+
+
+
+#add-form {
+		margin-top:10px;
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 35%;
+		max-width:335px;
+		min-width:166px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.comment_container-grubinfo {
+		margin-top:10px;
+		background-color: #F4F4FF;
+		border: solid 1px #000;
+		border-collapse: collapse;
+		width: 60%;
+}
+
+
+table#image_detail_table_settings-grubinfo{
+  table-layout: fixed;
+width: 100%;
+}
+
+td.image-detail-title{
+		font-weight: bold;
+		text-align: left;
+		padding-left:30px;
+		min-width 300px;
+		
+}
+
+td.image-detail-data{
+
+		text-align: left;
+		padding-left:30px;
+		min-width 300px;
+		
+}
+
+
+textarea#direction-textarea{
+	width:60%;
+
+
+}
+

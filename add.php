@@ -164,10 +164,12 @@ include 'includes/overall/overallheader.php' ;
 
 	 <br/ >
 
+<div id="add-form">
  <form action="" method="post" enctype="multipart/form-data">
 		 <input type="file" name="image_add"> <input type="submit">
  </form>
 		
+</div>
 		</body>		 
 <?php 
 

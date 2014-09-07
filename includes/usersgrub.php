@@ -73,7 +73,7 @@ $get_recipe_directions = empty($get_recipe['recipe_directions']) ? "" :  $get_re
 	
 			
 		<li> 	Recipe Name:	<input type="text" name="recipe_name" value="<?php echo $get_recipe_name ; ?>">  </li>
-		<li> 	Directions:	<br > <textarea type="text" name="recipe_directions" ><?php echo $get_recipe_directions; ?></textarea>  </li>	
+		<li> 	Directions:	<br > <textarea id="direction-textarea"type="text" name="recipe_directions" ><?php echo $get_recipe_directions; ?></textarea>  </li>	
 
 
 

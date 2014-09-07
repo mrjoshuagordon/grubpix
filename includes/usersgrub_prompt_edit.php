@@ -1,7 +1,7 @@
  	 <a href = " <?php echo 'grubedit.php?image='.$image ;?> " > Edit Details </a> 
  
- <div class="comment_container">
-  <table class="image_detail_table_settings ">
+ <div class="comment_container-grubinfo">
+  <table id="image_detail_table_settings-grubinfo">
 
 	<tr>
 	  <td class="image-detail-title">Image Title</td>

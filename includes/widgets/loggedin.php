@@ -53,7 +53,7 @@
 			 <input type="file" name="profile"> <input type="submit">
 			 </form>
 	</div>
-		<ul>
+		<ul id="loggedin-ul">
 			<li>	<a href="logout.php">Logout</a> </li>
 			<li>	<a href="<?php echo $user_data['username']; ?>" > Your Profile</a>  </li>
 			<li>	<a href="changepassword.php">Change Password</a>  </li> 

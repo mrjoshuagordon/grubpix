@@ -11,7 +11,7 @@
 
 #container {
 	margin: 0 auto;
-	width: 90%;
+	width: 95%;
 
 }
 
@@ -22,7 +22,7 @@
 
 	border: 1px solid #A89F96;
 	float:left;
-	width:65%;
+	width:100%;
 	min-height:800px;
 }
 
@@ -31,18 +31,30 @@ div#side-panel{
 	margin-left: 59%;
 	margin-right:25%;
 	background: #FFF8FF;
-	min-height:500px;
-	border: 1px solid #A89F96;
+	height:500px;
+
 	padding-bottom: 20px;
 
      position: fixed;
 }
+
+div#side-panel-wrapper{
+	margin-left: 59%;
+	margin-right:25%;
+	background: #FFF8FF;
+	height:500px;
+
+	padding-bottom: 20px;
+
+}
+
 
 aside.sidebar {
     float:right;
     width: 100%;
 	padding-left:20px;
 	background: #FFF8FF;
+		border: 1px solid #A89F96;
 }
 
 
@@ -56,6 +68,7 @@ table {
 	width: 60%;
 	text-align: center;
 	border-collapse: collapse;
+	  table-layout: fixed;
 }
 
 /*Do not show the mobile profile add in large screen format*/
@@ -100,6 +113,15 @@ a, .sidebar li ul li a.readmore {
 	
 
 }
+
+
+ul#loggedin-ul li{
+	padding:0px;
+   display: block;
+
+}
+
+
 
 a:hover {
 
@@ -326,6 +348,8 @@ a img {
 	background: $f9f9f9;
 	border: 1px dashed #ccc;
 	padding: 5px;
+	margin-right:15px;
+	
 	
 }
 
@@ -606,7 +630,7 @@ footer .footer-bottom p, footer .footer-bottom p a {
 
 /*Small Screen Size*/
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1000px ), screen and (max-height: 800px) {
 
 	div#container { width: auto; }
 
@@ -633,6 +657,12 @@ footer .footer-bottom p, footer .footer-bottom p a {
 	
 	#mobile_settings{
 	display:block;
+	
+	}
+	
+	div.profile{
+		border: 1px dashed #ccc;
+		width:50%;
 	}
 	
 	div#side-panel{
@@ -655,6 +685,13 @@ footer .footer-bottom p, footer .footer-bottom p a {
 		border-collapse: collapse;
 		width: 100%;
 }
+
+
+	div.table_container, div.comment_output_table, 
+	table#dataTable.form, div.comment_container, td.image-detail-data{
+		width:100%;
+	
+	}
 
 
 }
