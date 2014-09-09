@@ -14,7 +14,12 @@ $query = mysql_query("SELECT * FROM `users` WHERE `user_id` = '$user_id'  ");
 		$result[] = array( 'profile' => $row['profile']);
 	
 	} 
-	return $result[0];
+	
+
+
+ 	return $result[0];
+ 
+
 
 
 }
@@ -107,7 +112,7 @@ function find_grub_ids_by_settings() {
 
 $result = array();
 
-$query = mysql_query("SELECT `grub_id` FROM `image_data` WHERE `active` = 1 ORDER BY timestamp(`time`) DESC");
+$query = mysql_query("SELECT `grub_id` FROM `image_data` WHERE `active` = 1");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	
@@ -291,6 +296,13 @@ function user_id_from_imagename($imagename){
 	return mysql_result(mysql_query("SELECT `user_id` from `grubs` where `image` = '$imagename'"),0,
 	'user_id');
 } 
+
+
+function user_id_from_image_id($image_id){
+	return mysql_result(mysql_query("SELECT `user_id` from `grubs` WHERE `grub_id` = '$image_id' "),0,
+	'user_id');
+} 
+
 
 
 

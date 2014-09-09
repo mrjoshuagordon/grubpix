@@ -1,6 +1,6 @@
 <div> 
 
-<h2> Hello <?php echo $user_data['first_name'] ;?> ! </h2>
+
 	<div class="inner">
 	<div class="profile">
 		<?php
@@ -9,8 +9,7 @@
 		$grub_ids = find_grub_ids();
 		$images =  find_public_images( $grub_ids );
 		
-	//	print_r($images[0]);
-	//	die();
+
 		
 		if(isset($_FILES['profile']) === true){
 				
@@ -28,8 +27,8 @@
 					
 					change_profile_image($session_user_id, $file_temp, $file_ext);
 					make_profile_thumbs();
-			//		header('Location: ' .$current_file);
-					exit();
+					header('Location: ' .$current_file);
+					//exit();
 				} else{
 				
 					echo 'Incorrect file type. Allowed: ';
@@ -45,6 +44,7 @@
 		}
 		
 			if(empty($user_data['profile']) === false){
+
 			 echo '<img src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile">';
 			
 			}

@@ -1,17 +1,30 @@
 <script>
 function toggleTable() {
     var lTable = document.getElementById("recipeTable");
-    lTable.style.display = (lTable.style.display == "table") ? "none" : "table";
+    var dTable = document.getElementById("directionsTable");
+    var rDiv = document.getElementById("recipe-div");
+    var iDiv = document.getElementById("ingredients-div");
+    var dHt = document.getElementById('recipe'); 
     
-        var dTable = document.getElementById("directionsTable");
-   			 dTable.style.display = (dTable.style.display == "table") ? "none" : "table";
-   			 
-   	  document.getElementById('recipe').innerHTML = '<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Recipe</a> </span>';
+    lTable.style.display = (lTable.style.display == "table") ? "none" : "table";
+    dTable.style.display = (dTable.style.display == "table") ? "none" : "table";
+   //	rDiv.style.border =  (rDiv.style.border == "inset black 1px") ? "none" : "inset black 1px";
+   //	iDiv.style.border =  (iDiv.style.border == "inset black 1px") ? "none" : "inset black 1px";
+   	
+   	dHt.innerHTML =  ( 	dHt.innerHTML ==  '<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">  <h4> Hide Recipe </h4> </a> </span>') ? 
+   	'<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">  <h4> Show Recipe </h4> </a> </span>'
+   	
+   	: '<span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">  <h4> Hide Recipe </h4> </a> </span>';
+   	
+   	
 }
+
+
 
 
   </script>
   
+  <div id="recipe-div"> 
   
   <?php
 
@@ -31,7 +44,7 @@ if($recipe_id > 1) {
 
 
 ?>
- <span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe">Show Recipe</a> </span> 
+ <span id="recipe"><a id="loginLink" onclick="toggleTable();" href="#recipe"> <h4> Show Recipe </h4> </a> </span> 
   
   <?php
   }
@@ -39,9 +52,8 @@ if($recipe_id > 1) {
   ?>
 
 
- 
- 
-<table id="directionsTable" class="comment_table" border="1" align="center" style="display:none"> 
+
+<table id="directionsTable" cellpadding="0" cellspacing="0" style="display:none"> 
 <tr> 
 	<td class="directions-title"> Recipe Name:    </td> 
 	<td class="directions-content" colspan="2"><?php echo  $name_directions['recipe_name']; ?> </td>
@@ -52,7 +64,10 @@ if($recipe_id > 1) {
 </tr>
 </table>
 
-<table id="recipeTable" class="comment_table" border="1" align="center" style="display:none">  
+
+<br>
+
+<table id="recipeTable" style="display:none">  
 
 <?php
 
@@ -79,3 +94,4 @@ for($i = 0; $i < count($recipe_data ); $i++){
 ?>
 
 </table>
+</div>

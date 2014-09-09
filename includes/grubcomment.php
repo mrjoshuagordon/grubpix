@@ -94,6 +94,7 @@ if(strlen($comment) > 255) {
 
 <?php //get user comment
 
+
 $comments = find_image_comments($image_id);
 //print_r($comments[0]);
 //print_r($comments[0]['username']);
@@ -114,7 +115,12 @@ for($i = 0; $i < count($comments) ; $i ++ ) {
 	 $comment_user_id  = user_id_from_username($comments[$i]['username']);
 	$temp = find_profile($comment_user_id);
 	
-	$profile = 'images/profile/thumbs/'.end(explode('/',$temp['profile']));
+	if(!empty($temp['profile'])) {
+		$profile = 'images/profile/thumbs/'.end(explode('/',$temp['profile']));
+			} else{
+	$profile = 'images/profile/thumbs/no_profile.jpg';
+	} 
+
 	
 	echo '<tr> <td class="comment-user"> <a href="./'.$comments[$i]['username'].'"><img id="comment-profile" src="'.$profile.'">'.  $comments[$i]['username'].'</a></td> <td class="comment-text">'. $comments[$i]['comment'] . '</td> </tr>';
 }

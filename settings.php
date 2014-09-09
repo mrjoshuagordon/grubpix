@@ -166,7 +166,7 @@ echo '<h2> Profile Data   ( * required ) </h2>';
         	</tr>
         	  <tr>
             	<td class="settings-label" >First Name<sup>*</sup>:</td>
-            	<td class="settings-input" ><input type="text" name="first_name" size="25" value="<?php echo $user_data['first_name']; ?>">  </td>         	
+            	<td class="settings-input" ><input class="settings-text-input" type="text" name="first_name"  value="<?php echo $user_data['first_name']; ?>">  </td>         	
             	<td >
             	
             	     <input class="checkbox1" type="checkbox" name="allow_first_name" <?php if($user_settings['allow_first_name'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_first_name"><span></span></label>
@@ -175,7 +175,7 @@ echo '<h2> Profile Data   ( * required ) </h2>';
         	</tr>
         	 <tr>
             	<td class="settings-label" >Last Name:</td>
-            	<td class="settings-input"><input type="text" name="last_name" size="25" value="<?php echo $user_data['last_name']; ?>">  </td>         	
+            	<td class="settings-input"><input class="settings-text-input" type="text" name="last_name" value="<?php echo $user_data['last_name']; ?>">  </td>         	
             	<td>
             	
             	
@@ -187,7 +187,7 @@ echo '<h2> Profile Data   ( * required ) </h2>';
         	</tr>
         	<tr>
             	<td class="settings-label" >Email<sup>*</sup>:</td>
-            	<td class="settings-input"><input type="text" name="email" size="25" value="<?php echo $user_data['email']; ?>">   </td>         	
+            	<td class="settings-input"><input class="settings-text-input" type="text" name="email"  value="<?php echo $user_data['email']; ?>">   </td>         	
             	<td>
             	
    <input class="checkbox1" type="checkbox" name="allow_email_profile" <?php if($user_settings['allow_email_profile'] == '1' ) {  echo 'checked="checked"' ; } ?> ><label for="allow_email_profile"><span></span></label>

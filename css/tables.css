@@ -61,15 +61,25 @@ textarea.textarea-style {
 
 table#comment_table_settings td.settings-input, td.settings-label{
 	text-align: left;
-	padding-left:30px;
+	padding-left:15px;
+	margin-left: 15px;
 }
+
+
+
+input.settings-text-input{
+	width:100%;
+
+}
+
+
 
 table#comment_table_settings tr.settings-header{
 		font-weight: bold;
 }
 
 table#comment_table_settings td.settings-input input{
-		border:1;
+		border:1px;
 		border-bottom: 2px solid #ccc;
 		padding-top: 5px;
 		padding-left: 15px ;
@@ -78,21 +88,22 @@ table#comment_table_settings td.settings-input input{
 
 
 
+div#recipe-div{
+		width: 60%;
+		border:1px solid #000;
 
-
-
-
+}
 
 
 
 table#directionsTable  {
 
-		margin-bottom:10px;
-		width: 60%;
+		width: 100%;
+	
 }
 
 table#recipeTable  {
-		width: 60%;
+		width: 100%;
 }
 
 
@@ -228,8 +239,6 @@ font-size: 80%;
 
 
 
-
-
 div.comment_container-grubinfo {
 		margin-top:10px;
 		background-color: #F4F4FF;
@@ -248,7 +257,7 @@ td.image-detail-title{
 		font-weight: bold;
 		text-align: left;
 		padding-left:30px;
-		min-width 300px;
+		min-width: 300px;
 		
 }
 
@@ -256,7 +265,7 @@ td.image-detail-data{
 
 		text-align: left;
 		padding-left:30px;
-		min-width 300px;
+		min-width: 300px;
 		
 }
 

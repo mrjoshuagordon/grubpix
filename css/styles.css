@@ -38,15 +38,7 @@ div#side-panel{
      position: fixed;
 }
 
-div#side-panel-wrapper{
-	margin-left: 59%;
-	margin-right:25%;
-	background: #FFF8FF;
-	height:500px;
 
-	padding-bottom: 20px;
-
-}
 
 
 aside.sidebar {
@@ -55,6 +47,7 @@ aside.sidebar {
 	padding-left:20px;
 	background: #FFF8FF;
 		border: 1px solid #A89F96;
+		min-width:350px;
 }
 
 
@@ -72,7 +65,7 @@ table {
 }
 
 /*Do not show the mobile profile add in large screen format*/
-#mobile_settings{
+#mobile_settings, #mobile-login{
 	display:none;
 }
 
@@ -360,7 +353,7 @@ a img {
 
 
 .profile_page img {
-	width:50%;
+	width:30%;
 }
 
 
@@ -524,7 +517,7 @@ footer .footer-bottom p, footer .footer-bottom p a {
 } 
 
 #container_gallery{
-	max-width:60%;
+	width:60%;
 	padding:10px;
 	background:#f0f0f0;
 	margin:0 auto;
@@ -660,6 +653,10 @@ footer .footer-bottom p, footer .footer-bottom p a {
 	
 	}
 	
+	#mobile-login{
+	display:block;
+	
+	}
 	div.profile{
 		border: 1px dashed #ccc;
 		width:50%;
@@ -688,10 +685,29 @@ footer .footer-bottom p, footer .footer-bottom p a {
 
 
 	div.table_container, div.comment_output_table, 
-	table#dataTable.form, div.comment_container, td.image-detail-data{
+	table#dataTable.form, div.comment_container{
 		width:100%;
 	
 	}
+	
+	
+	
+	td.image-detail-title{
+		font-weight: bold;
+	
+		padding-left:30px;
+		min-width: 300px;
+		
+}
+
+td.image-detail-data{
+
+		text-align: left;
+		padding-left:30px;
+		min-width: 300px;
+		
+}
+
 
 
 }

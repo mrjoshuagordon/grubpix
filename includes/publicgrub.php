@@ -1,9 +1,33 @@
 <div class="grub_detail">
 	<a href="report.php?grub_id=<?php echo $image_id; ?>&report=1"> Report Abuse</a>
+ <?php 
 
+$user_id_temp  = user_id_from_image_id($image_data['grub_id']);
+ $user_name_temp = user_name_from_id($user_id);
+ $temp = find_profile($user_id_temp);	 
+
+if(!empty($temp['profile']))
+ {
+
+ $profile = 'images/profile/thumbs/'.end(explode('/',$temp['profile']));
+
+} else{
+
+ $profile = 'images/profile/thumbs/no_profile.jpg';
+
+} 
+
+ ?>
 	
 <table>
-
+	<tr>
+	  <td >Uploaded By:</td>
+	  <td >
+	   <?php echo  '<a href="./'.$user_name_temp.'"><img width="50px"  src="'.$profile.'">'. ' '. $user_name_temp.'</a>' ?>
+	  
+	  
+	   </td>
+	</tr>
   <tr>
     <td>Image Title</td>
     <td><?php echo $image_data['title']; ?>  </td>
