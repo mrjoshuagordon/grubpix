@@ -1,6 +1,14 @@
-<div> 
+<?php
 
+if(empty($user_data['profile']) === false){
+			echo '<h4 id="welcome-aside"> Welcome, '. $user_data['username'] .'</h4>'	;
+			 echo '<a href=./'.$user_data['username'].'><img id="profile-sidebar" src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile"> </a>';
+			
+			}
 
+?>
+
+<!-- 
 	<div class="inner">
 	<div class="profile">
 		<?php
@@ -43,16 +51,14 @@
 						
 		}
 		
-			if(empty($user_data['profile']) === false){
-
-			 echo '<img src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile">';
 			
-			}
 		 ?>
 			 <form action="" method="post" enctype="multipart/form-data">
 			 <input type="file" name="profile"> <input type="submit">
 			 </form>
 	</div>
+	
+	-->
 		<ul id="loggedin-ul">
 			<li>	<a href="logout.php">Logout</a> </li>
 			<li>	<a href="<?php echo $user_data['username']; ?>" > Your Profile</a>  </li>
@@ -96,7 +102,7 @@
 	
 
 	
-</div>
+
  
  
  

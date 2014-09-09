@@ -174,8 +174,17 @@ img#grub-main,  img#grub-main-edit {
 img#grub-rec-widget{
 height: 50px;
 
+}
+
+img#profile-sidebar{
+margin-top:10px;
+margin-bottom:10px;
+ border-radius: 10px;
+ border: 2px solid #A89F96;
+max-height: 200px;
 
 }
+
 
 
 
@@ -212,8 +221,10 @@ font-size: 80%;
 		min-width:166px;
 }
 
-
-
+h4#welcome-aside{
+	margin-top:5px;
+	margin-bottom:0px;
+}
 
 
 

@@ -7,13 +7,13 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 	
 	if(user_exists($username) === true) {
 	$user_id  = user_id_from_username($username);
-	$profile_data = user_data($user_id, 'first_name', 'last_name', 'email','profile', 'gender', 'age');
+	$profile_data = user_data($user_id, 'username', 'first_name', 'last_name', 'email','profile', 'gender', 'age');
 	$profile_settings = user_settings($user_id, 'allow_first_name', 'allow_last_name', 'allow_email_profile', 'allow_gender', 'allow_age');
 	//print_r($profile_data);
 	?>
 		
 	
-		<h1> <?php echo $profile_data['first_name']; ?>'s Profile </h1>
+		<h1> <?php echo $profile_data['username']; ?>'s Profile </h1>
 			
 		<!-- <p>	Email: <?php echo $profile_data['email']; ?>  </p> -->
 		
@@ -25,12 +25,12 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 
 <?php 
 			if(empty($profile_data['profile']) === false){
-			 echo '<img src="', $profile_data['profile'],'" alt="',$profile_data['first_name'],'\'s Profile">';
+			 echo '<img class="settings-profile-img" src="', $profile_data['profile'],'" alt="',$profile_data['first_name'],'\'s Profile">';
 			
 			} else{
 			
 			
-			echo '<img src=images/profile/no_profile.jpg>';
+			echo '<img class="settings-profile-img" src=images/profile/no_profile.jpg>';
 			
 			
 			}

@@ -36,7 +36,8 @@ if (empty($_POST) === false) {
 <?php 
 
 if(isset($_GET['success']) === true && empty($_GET['success']) === true){
-	echo 'Your details have changed';
+	echo '<h4> Your details have changed </h4> <br>';
+	echo '<h4> <a href=./'.$user_data['username'].'>Click here to return to your Profile </a> </h4>' ;
 
 }  else{ 
 echo '<h2> Profile Data   ( * required ) </h2>';
@@ -132,15 +133,16 @@ echo '<h2> Profile Data   ( * required ) </h2>';
 		}
 		
 			if(empty($user_data['profile']) === false){
-			 echo '<img src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile">';
+			 echo '<img class="settings-profile-img" src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile">';
 			
 			}
 		 ?>
 			 <form action="" method="post" enctype="multipart/form-data">
-			 <input type="file" name="profile"> <input type="submit">
+			 <input type="file" name="profile" > <br>
+			<input type="Submit" value="Submit Photo">  
 			 </form>
 	</div>
-		<ul>
+		<ul id="settings-ul">
 			<li>	<a href="logout.php">Logout</a> </li>
 			<li>	<a href="<?php echo $user_data['username']; ?>" > Your Profile</a>  </li>
 			<li>	<a href="changepassword.php">Change Password</a>  </li> 
