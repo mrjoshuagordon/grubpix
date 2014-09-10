@@ -1,6 +1,53 @@
 <?php 
 
 
+function find_grub_ids_by_user_id ($session_user_id) {
+
+$result = array();
+
+$query = mysql_query(" SELECT `image` FROM `grubs` WHERE  `user_id` = '$session_user_id' AND `grub_id` IN
+					(SELECT `grub_id` FROM `image_data` WHERE `active` = 1) 
+						ORDER BY `grub_id` DESC
+																		
+						 ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = $row['image'];
+	
+	} 
+	return $result;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function find_profile($user_id){
 
@@ -23,7 +70,6 @@ $query = mysql_query("SELECT * FROM `users` WHERE `user_id` = '$user_id'  ");
 
 
 }
-
 
 
 
@@ -82,6 +128,12 @@ function user_setting_limit_input($user_id, $limit, $order){
 	
 
 }
+
+
+
+
+
+
 
 
 
@@ -238,8 +290,26 @@ if(!file_exists($fileloc)) {
 function image_data( $image_id) {
 	
 $data = mysql_fetch_assoc(mysql_query("SELECT * FROM `image_data` WHERE `grub_id` = $image_id"));
-		
+
+if(count($data) > 1) {
+ 		
 return $data;	
+
+} else {
+
+return array(
+	'data_id' => '',
+	'grub_id' => '',
+	'title' => '',
+	'location' => '',
+	'description' => '',
+	'price' => '',
+	'time' => '',
+	'active' => ''
+
+);
+
+}
 
 
 }

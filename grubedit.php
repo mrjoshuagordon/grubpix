@@ -128,7 +128,9 @@ if(empty($_POST['Publish']) === false) {
 				</li>
 								
 				<li> 
-					<input type="checkbox" name="public_check" <?php if($image_data['active'] == 1 ) {  echo 'checked="checked"' ; } ?>">  Make this image public? 
+					<input id = "public-check" type="checkbox" name="public_check" <?php 
+					
+					if( strlen($image_data['active']) > 0 && $image_data['active'] == 1 ) {  echo 'checked="checked"' ; } ?>>  Make this image public? 
 				</li>
 				
 				<li> 

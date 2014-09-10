@@ -57,6 +57,43 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 	</div>
 	
 	
+	<!-- Users Grubs -->
+	<?php  
+	
+	$images = find_grub_ids_by_user_id ($session_user_id);
+	//print_r($images);
+	  ?>
+		<div id="rec"> 
+		<?php echo $profile_data['username'].'\'s' ; ?> Recently Added Grubs:
+	<div class="wrap_rec">
+    <table class="head">
+        <tr>
+            <td>Grub</td>
+            <td>Title</td>
+            <td>Description</td>
+        </tr>
+    </table>
+    <div class="inner_table_rec">
+        <table> <?php 
+							for($i = 0; $i < min(count($images),5); $i++){
+						
+						 $image = $images[$i]; 
+						$grub_id = image_id_from_imagename($image); 
+						$temp = image_data( $grub_id );	
+						
+						echo '<tr href="grubinfo.php?image='.$image.'"> <td> <a href="grubinfo.php?image='.$image.'"><img id="grub-rec-widget" src="uploads/thumbs/'.$image.'"></img></a></td> <td> '. $temp['title'].'</td> <td>'. substr($temp['description'],0,30).'...'.'</td> </tr>';
+						}
+					?>
+    </table>
+    </div>
+	</div> 
+	
+	</div>
+	
+	
+	
+	
+	
 	<?php
 	
 	} else{

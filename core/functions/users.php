@@ -70,14 +70,20 @@ function user_settings($user_id){
 }
 
 
+function get_total_active_users() {
+	return mysql_result(mysql_query("SELECT COUNT(*) as count_users  FROM `users` WHERE `active` = 1 "),0,
+	'count_users'); 
+}
 
 
 
-function get_active_users() {
+
+
+function get_active_users($limit) {
 
 $result = array();
 
-$query = mysql_query("SELECT *  FROM `users` WHERE `active` = 1 ");
+$query = mysql_query("SELECT *  FROM `users` WHERE `active` = 1 LIMIT $limit ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	

@@ -695,10 +695,14 @@ img.settings-profile-img{
 
 
 	div.table_container, div.comment_output_table, 
-	table#dataTable.form, div.comment_container{
+	table#dataTable.form, div.comment_container, 
+	div.comment_container-grubinfo, table#image_detail_table_settings-grubinfo, 
+	div#recipe-div, div.comment_table-grubinfo, textarea#direction-textarea{
 		width:100%;
 	
 	}
+	
+
 	
 	
 	

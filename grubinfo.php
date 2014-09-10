@@ -55,7 +55,9 @@ echo ' <div class="grub_info">  <a href='.$link.'> <img id="grub-main" src='.$li
 
 	$image_id = image_id_from_imagename($image);
 	$image_data = image_data($image_id);
-	
+
+
+//	print_r($image_data);
 
 $user_id = user_id_from_imagename($image);
 

@@ -5,9 +5,33 @@ include 'includes/overall/overallheader.php' ;
 require 'ProfileGallery.php';
 $gallery = new ProfileGallery();
 $gallery->setPath('./images/profile/'); 
+$limits = [10,25,50,100,500,1000]; 
+
+?>
 
 
-$user_profiles = get_active_users();
+<script>
+function change(){
+    document.getElementById("num-users-form").submit();
+  }
+</script>
+
+
+<?php
+if(isset($_POST['users-id'])) {
+	$limit = (int) $_POST['users-id'];
+	unset($limits[array_search($limit,$limits)]); 
+	array_unshift($limits, $limit);
+
+	} else{
+	
+	$limit = 10;	
+	
+} 
+
+
+
+$user_profiles = get_active_users($limit); 
 
 
 $pics = array();
@@ -31,8 +55,25 @@ $images = $gallery->getImages(array('jpg','png','jpeg','gif'), $pics);
 
 
 <h1> User Pages </h1>
-<p> These are Grub Nums active Users </p>
+<p> GrubNums has <?php echo get_total_active_users();  ?> active Users </p>
 
+
+<form id="num-users-form" method="post">
+Users Shown:  <select name = 'users-id' onchange="change()" width="80" style="width: 80px" >
+	
+
+		<?php
+		for($i=0; $i<count($limits); $i++){
+			echo '<option>'.$limits[$i].'</option>' ;
+			}			
+		?>
+
+	
+</select>
+
+
+
+</form> 
 
 <div class="container_gallery">
 			<?php if($images): ?>
