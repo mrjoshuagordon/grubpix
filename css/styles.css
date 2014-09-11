@@ -531,19 +531,66 @@ footer .footer-bottom p, footer .footer-bottom p a {
 
 .gallery-item{
 	float:left;
-	background:#fff;
+	background:rgba(66, 189, 204, 0.5); 
 	width:150px;
 	margin:1%;
 	padding:2%;
-	padding-bottom:5%;
+
 	box-shadow:1px 1px 1px;
 	
 }
 
-.gallery-item img{
+
+
+
+.gallery-item img, .gallery-item-public img, .gallery-item-not-public img{
 	width:100%;
+	display: block;
+	margin: 0 auto;
 
 }
+
+
+
+.gallery-item-public{
+	float:left;
+	background:rgba(181, 5, 14, 0.5); 
+	width:150px;
+	margin:1%;
+	padding:2%;
+
+	box-shadow:1px 1px 1px;
+
+
+	
+}
+
+
+
+.gallery-item-not-public{
+	float:left;
+	background:rgba(19, 117, 28, 0.5);
+	width:150px;
+	margin:1%;
+	padding:2%;
+
+	box-shadow:1px 1px 1px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Drag and drop Upload*/
@@ -593,7 +640,13 @@ img.settings-profile-img{
 
 
 
-
+input#report-input{
+width: 2em;
+margin: 0;
+padding: 0;
+font-size: 1em;
+opacity: .5;
+}
 
 
 
@@ -677,7 +730,7 @@ img.settings-profile-img{
 	}
 	
 	#container_gallery{
-	max-width:100%;
+	width:100%;
 	padding:10px;
 	background:#f0f0f0;
 	margin:0 auto;
@@ -697,7 +750,7 @@ img.settings-profile-img{
 	div.table_container, div.comment_output_table, 
 	table#dataTable.form, div.comment_container, 
 	div.comment_container-grubinfo, table#image_detail_table_settings-grubinfo, 
-	div#recipe-div, div.comment_table-grubinfo, textarea#direction-textarea{
+	div#recipe-div, div.comment_table-grubinfo, textarea#direction-textarea {
 		width:100%;
 	
 	}

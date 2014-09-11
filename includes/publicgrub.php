@@ -19,7 +19,7 @@ if(!empty($temp['profile']))
 
  ?>
 	
-<table>
+<!-- <table>
 	<tr>
 	  <td >Uploaded By:</td>
 	  <td >
@@ -48,8 +48,42 @@ if(!empty($temp['profile']))
 	  <td>Upload Date</td>
 	  <td><?php echo  $image_data['time']  ; ?></td>
 	</tr>
-</table>
- 
+</table> -->
+  
+ <div class="comment_container-grubinfo">
+  <table id="image_detail_table_settings-grubinfo">
+	<tr>
+	  <td class="image-detail-title">Published By</td>
+	  <td class="image-detail-data">
+	   <?php echo  '<a href="./'.$user_name_temp.'"><img width="50px"  src="'.$profile.'">'. ' '. $user_name_temp.'</a>' ?>
+	  
+	  
+	   </td>
+	</tr>
+	<tr>
+	  <td class="image-detail-title">Image Title</td>
+	  <td class="image-detail-data"><?php echo $image_data['title']; ?>  </td>
+	</tr>
+   <tr>
+	  <td class="image-detail-title">Location</td>
+	  <td class="image-detail-data"><?php echo $image_data['location']; ?> </td>
+	</tr>
+	  <tr >
+       <td class="image-detail-title">Price</td>
+       <td class="image-detail-data"><?php if(  $image_data['price'] != 0 )  {   echo '$'.$image_data['price'];  } else { echo '-' ;   }   ?></td>
+ 	 </tr>
+	<tr>
+	  <td class="image-detail-title">Description</td>
+	  <td class="image-detail-data"><?php echo$image_data['description']; ?></td>
+	</tr>
+	<tr>
+	  <td class="image-detail-title">Modified Date</td>
+	  <td class="image-detail-data"><?php echo $image_data['time'] ; ?></td>
+	</tr>
+  </table>
+
+</div>
+
 	
 	
 

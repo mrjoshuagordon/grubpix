@@ -24,14 +24,23 @@ function toggleTable() {
 
   </script>
   
+  <?php
+
+ $recipe_result = get_recipe_id($image_id);	
+
+if(!empty( $recipe_result)) {
+
+?> 
+  
+  
   <div id="recipe-div"> 
   
   <?php
 
 //get_recipe ($image_id) <?php   echo  ;  
 
- $recipe_result = get_recipe_id($image_id);	
 
+empty($recipe_result) ;
 //print_r($recipe_result);
 $recipe_id =  $recipe_result['recipe_id'] ;
 
@@ -95,3 +104,6 @@ for($i = 0; $i < count($recipe_data ); $i++){
 
 </table>
 </div>
+<?php
+}
+?>

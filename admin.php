@@ -16,9 +16,9 @@ $reports = get_reported_images();
 
 ?>
 
-<div class="comment_output">
+<div id="comment_output_admin">
 
-<table class="comment_table">
+<table id="comment_table_admin">
 
 <?php
 echo   ' <tr> <td> Image </td> <td> Reporting User </td> <td> Reason </td><td> Count </td> <td> Remove </td></tr>'; 

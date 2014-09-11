@@ -294,3 +294,44 @@ textarea#direction-textarea{
 
 }
 
+
+table#table-legend{
+width:30% ;
+margin-bottom:10px;
+
+
+}
+
+
+td#td-private{
+	background:rgba(181, 5, 14, 0.5); 
+	color: #000;
+
+}
+
+
+
+td#td-public{
+	background:rgba(19, 117, 28, 0.5); 
+	color: #000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

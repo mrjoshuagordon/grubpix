@@ -423,7 +423,7 @@ function find_user_images  ($session_user_id) {
 
 $result = array();
 
-$query = mysql_query("SELECT *  FROM `grubs` WHERE `user_id` = $session_user_id ");
+$query = mysql_query("SELECT *  FROM `grubs` WHERE `user_id` = $session_user_id ORDER BY `grub_id` DESC ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
 	

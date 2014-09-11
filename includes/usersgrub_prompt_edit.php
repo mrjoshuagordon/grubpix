@@ -36,7 +36,7 @@ if(!empty($temp['profile']))
  <div class="comment_container-grubinfo">
   <table id="image_detail_table_settings-grubinfo">
 	<tr>
-	  <td class="image-detail-title">Uploaded By:</td>
+	  <td class="image-detail-title">Published By</td>
 	  <td class="image-detail-data">
 	   <?php echo  '<a href="./'.$user_name_temp.'"><img width="50px"  src="'.$profile.'">'. ' '. $user_name_temp.'</a>' ?>
 	  
@@ -60,7 +60,7 @@ if(!empty($temp['profile']))
 	  <td class="image-detail-data"><?php echo$image_data['description']; ?></td>
 	</tr>
 	<tr>
-	  <td class="image-detail-title">Upload Date</td>
+	  <td class="image-detail-title">Modified Date</td>
 	  <td class="image-detail-data"><?php echo $image_data['time'] ; ?></td>
 	</tr>
   </table>
@@ -74,7 +74,7 @@ if(!empty($temp['profile']))
   <div class="comment_container-grubinfo">
   <table id="image_detail_table_settings-grubinfo">
 	<tr>
-	  <td class="image-detail-title">Uploaded By:</td>
+	  <td class="image-detail-title">Published By</td>
 	  <td class="image-detail-data">
 	  
 	  
@@ -98,7 +98,7 @@ if(!empty($temp['profile']))
 	  <td class="image-detail-data"></td>
 	</tr>
 	<tr>
-	  <td class="image-detail-title">Upload Date</td>
+	  <td class="image-detail-title">Modified Date</td>
 	  <td class="image-detail-data"></td>
 	</tr>
   </table>

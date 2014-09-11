@@ -6,6 +6,9 @@ protect_page();
 include 'includes/overall/overallheader.php' ;
 
 
+
+
+
 	
 
 		if(isset($_GET['grub_id'],$_GET['report'])){
@@ -20,12 +23,12 @@ include 'includes/overall/overallheader.php' ;
 
 		<div class="comment_container">
 		<form action="" method="post" name="reportform"> 
-				<input type="radio" name="report-type" value="not_food">  Not Food<br>
-				<input type="radio" name="report-type" value="spam" >Spam<br>
-				<input type="radio" name="report-type" value="nudity">Nudity<br>
-				<input type="radio" name="report-type" value="child"  >Child Exploitation<br>
-				<input type="radio" name="report-type" value="theft" >Identity theft or stolen personal information<br>
-				<input type="radio" name="report-type" value="copyright"  >Copyright Infringement<br>
+				<input id="report-input" type="radio" name="report-type" value="not_food">  Not Food<br>
+				<input id="report-input" type="radio" name="report-type" value="spam" >Spam<br>
+				<input id="report-input" type="radio" name="report-type" value="nudity">Nudity<br>
+				<input id="report-input" type="radio" name="report-type" value="child"  >Child Exploitation<br>
+				<input id="report-input" type="radio" name="report-type" value="theft" >Identity theft or stolen personal information<br>
+				<input id="report-input" type="radio" name="report-type" value="copyright"  >Copyright Infringement<br>
 				<input type="submit" value="Report" name="report-submit">
 				</form> 
 				</div>
