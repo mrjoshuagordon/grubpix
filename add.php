@@ -166,7 +166,7 @@ include 'includes/overall/overallheader.php' ;
 
 <div id="add-form">
  <form action="" method="post" enctype="multipart/form-data">
-		 <input type="file" name="image_add"> <input type="submit">
+		 <input  type="file" name="image_add"> <input id="add-submit" type="submit">
  </form>
 		
 </div>

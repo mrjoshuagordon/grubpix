@@ -162,6 +162,17 @@ table.head tr td {
     
 }
 
+
+
+.inner_table_profile {
+    height: 300px;
+    overflow-y: auto;
+    
+}
+
+
+
+
 .inner_table_rec {
     height:  225px;
     max-width: 400px;

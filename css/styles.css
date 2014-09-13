@@ -10,10 +10,10 @@
 
 header {
 
-	padding: 15px 15px;
+	padding: 5px 15px;
 	margin: 0 auto;
 	text-align:left;
-	max-height:150px;
+	max-height:120px;
 }
 
 
@@ -60,8 +60,23 @@ aside.sidebar {
 }
 
 
+div#profile-aside{
+float:left;
+
+}
+
+div#loggedin-sidebar{
+	margin-left: 50%;
+	padding-top:25%;
+}
 
 
+input, textarea{
+
+padding-left:5px;
+font:1em "Open Sans", sans-serif;
+	color:#363639;
+}
 
 
 /** element defaults **/
@@ -161,6 +176,11 @@ h2 {
 
 }
 
+h2.h2-alert, li.li-alert{
+color: #FF2800;
+
+}
+
 
 
 h3 {
@@ -210,6 +230,7 @@ li {
 	padding-bottom: 5px;
 
 }
+
 
 
 textarea {
@@ -686,7 +707,7 @@ opacity: .5;
 
 /*Small Screen Size*/
 
-@media screen and (max-width: 1000px ), screen and (max-height: 800px) {
+@media screen and (max-width: 1000px ), screen and (max-height: 700px) {
 
 	div#container { width: auto; }
 

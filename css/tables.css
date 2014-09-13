@@ -182,6 +182,7 @@ margin-bottom:10px;
  border-radius: 10px;
  border: 2px solid #A89F96;
 max-height: 200px;
+max-width: 90%;
 
 }
 
@@ -320,13 +321,21 @@ td#td-public{
 
 
 
+input#add-submit{
+margin-left:5px;
+margin-top:5px;
+
+}
 
 
 
 
 
+div#rec{
+padding-top:2%;
+float:left;
 
-
+}
 
 
 

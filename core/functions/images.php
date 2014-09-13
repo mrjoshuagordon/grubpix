@@ -99,7 +99,10 @@ $query = mysql_query("SELECT * FROM `user_settings` WHERE `user_id` = '$user_id'
 		$result[] = array( 'limit' => $row['image_view'], 'order' => $row['order']);
 	
 	} 
+
+if(!empty($result[0])) {
 	return $result[0];
+}
 
 
 
@@ -153,6 +156,9 @@ $query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY `
 	
 	} 
 	return $result;
+	
+	
+	
 
 
 }

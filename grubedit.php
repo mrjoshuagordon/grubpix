@@ -41,7 +41,7 @@ if(empty($_POST['Publish']) === false) {
 			
 					
 			if(empty($errors) === false ) {
-			echo '<div class="comment_container"> <h2> Please fix the following:</h2>';
+			echo '<div class="comment_container"> <h2 class="h2-alert"> Please fix the following:</h2>';
 				echo output_errors($errors);		
 			echo '</div>'	;
 			}  else{
