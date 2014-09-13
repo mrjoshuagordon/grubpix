@@ -22,7 +22,7 @@
 	if(empty($_POST['recipe_name'])) {
 	
 	$comment_errors[] = 'Please enter a recipe name';
-			echo '<div class="comment_container"> <h2> Please fix the following:</h2>';
+			echo '<div class="comment_container"> <h2 class="h2-alert" > Please fix the following:</h2>';
 				echo output_errors($comment_errors);		
 			echo '</div>'	;	
 	

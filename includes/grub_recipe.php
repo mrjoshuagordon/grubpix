@@ -40,7 +40,7 @@ if(!empty( $recipe_result)) {
 //get_recipe ($image_id) <?php   echo  ;  
 
 
-empty($recipe_result) ;
+//empty($recipe_result) ;
 //print_r($recipe_result);
 $recipe_id =  $recipe_result['recipe_id'] ;
 

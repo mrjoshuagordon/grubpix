@@ -43,7 +43,7 @@ if(strlen($comment) > 255) {
 } 
 
 	if(empty($comment_errors) === false ) {
-			echo '<h2> Please fix the following:</h2>';
+			echo '<h2 class="h2-alert"> Please fix the following:</h2>';
 				echo output_errors($comment_errors);
 				
 		} else {

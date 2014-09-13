@@ -1,8 +1,8 @@
 <?php
 
 if(empty($user_data['profile']) === false){
-			echo '<h4 id="welcome-aside"> Welcome, '. $user_data['username'] .'</h4>'	;
-			 echo '<a href=./'.$user_data['username'].'><img id="profile-sidebar" src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile"> </a>';
+			echo '<div id="profile-aside"><h4 id="welcome-aside"> Welcome, '. $user_data['username'] .'</h4>'	;
+			 echo '<a href=./'.$user_data['username'].'><img id="profile-sidebar" src="', $user_data['profile'],'" alt="',$user_data['first_name'],'\'s Profile"> </a> </div>';
 			
 			}
 
@@ -59,6 +59,8 @@ if(empty($user_data['profile']) === false){
 	</div>
 	
 	-->
+	
+	<div id="loggedin-sidebar">
 		<ul id="loggedin-ul">
 			<li>	<a href="logout.php">Logout</a> </li>
 			<li>	<a href="<?php echo $user_data['username']; ?>" > Your Profile</a>  </li>
@@ -66,11 +68,8 @@ if(empty($user_data['profile']) === false){
 			<li>	<a href="settings.php">Settings</a>   </li>
 		</ul>	
 	
-	</div>	 
+</div>
 	
-
-	
-
 	
 	<div id="rec"> 
 		Recently Added Grubs:

@@ -64,7 +64,7 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
 	//print_r($images);
 	  ?>
 
-		<?php echo $profile_data['username'].'\'s' ; ?> Recently Added Grubs:
+		<?php echo $profile_data['username'].'\'s' ; ?> Grubs:
 	<div class="wrap">
     <table class="head">
         <tr>
@@ -73,9 +73,9 @@ if(isset($_GET['username']) === true && empty($_GET['username']) === false) {
             <td>Description</td>
         </tr>
     </table>
-    <div class="inner_table">
+    <div class="inner_table_profile">
         <table> <?php 
-							for($i = 0; $i < min(count($images),5); $i++){
+							for($i = 0; $i < max(count($images),0); $i++){
 						
 						 $image = $images[$i]; 
 						$grub_id = image_id_from_imagename($image); 
