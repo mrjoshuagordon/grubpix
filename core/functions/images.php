@@ -1,6 +1,86 @@
 <?php 
 
 
+
+// user to find get the images returned the order specified by the user on the gallery page
+function find_public_images_query( $grub_ids, $order, $rating ) {
+
+$ids = join(',',$grub_ids);  
+
+$result = array();
+
+$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) AND `grub_id` IN (
+
+						SELECT `grub_id` FROM (
+							SELECT `grub_id`, AVG(`rating`) AS rating FROM `grubs_ratings` GROUP BY `grub_id`
+								) as temp1 WHERE rating >= '$rating'
+							
+							) ORDER BY `grub_id` $order ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'image' => $row['image']);
+	
+	} 
+	return $result;
+	
+	
+	
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function find_grub_ids_by_user_id ($session_user_id) {
 
 $result = array();
@@ -87,50 +167,6 @@ $query = mysql_query("SELECT * FROM `users` WHERE `user_id` = '$user_id'  ");
 
 
 
-function get_setting_limit($user_id) {
-
-
-$result = array();
-
-$query = mysql_query("SELECT * FROM `user_settings` WHERE `user_id` = '$user_id'  ");
-
-	while(($row = mysql_fetch_assoc($query)) !== false){
-	
-		$result[] = array( 'limit' => $row['image_view'], 'order' => $row['order']);
-	
-	} 
-
-if(!empty($result[0])) {
-	return $result[0];
-}
-
-
-
-} 
-
-
-
-
-
-function user_setting_limit_input($user_id, $limit, $order){
-
-	$limit= (int) $limit; 
-	
-	$query = mysql_query("SELECT COUNT(`user_id`) from `user_settings` WHERE `user_id` = '$user_id'  ");
-			
-		if( mysql_result($query,0)>=1) {
-			
-		mysql_query("UPDATE `user_settings` SET `image_view` = '$limit', `order` = '$order'  WHERE `user_id` = '$user_id' ");
-					
-	
-		} else{
-				
-		mysql_query("INSERT INTO `user_settings` (`user_id`, `image_view`, `order`) VALUES ('$user_id' , '$limit', '$order')");
-
-		} 
-	
-
-}
 
 
 
@@ -140,28 +176,6 @@ function user_setting_limit_input($user_id, $limit, $order){
 
 
 
-
-// user to find get the images returned the order specified by the user on the gallery page
-function find_public_images_query( $grub_ids, $order ) {
-
-$ids = join(',',$grub_ids);  
-
-$result = array();
-
-$query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) ORDER BY `grub_id` $order ");
-
-	while(($row = mysql_fetch_assoc($query)) !== false){
-	
-		$result[] = array( 'image' => $row['image']);
-	
-	} 
-	return $result;
-	
-	
-	
-
-
-}
 
 
 

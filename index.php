@@ -58,7 +58,7 @@ echo '<h2> Welcome to GrubNums, '. $user_data['username'].'</h2>';
 ?>
 
 <div id="home_rec_grubs"> 
-		Recently Added Grubs:
+		Recent Grubs:
 	<div class="home_recent_grubs">
     <table class="head">
         <tr>

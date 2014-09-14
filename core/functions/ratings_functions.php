@@ -1,6 +1,109 @@
 <?php
 
 
+
+
+
+function get_setting_limit($user_id) {
+
+
+$result = array();
+
+$query = mysql_query("SELECT * FROM `user_settings` WHERE `user_id` = '$user_id'  ");
+
+	while(($row = mysql_fetch_assoc($query)) !== false){
+	
+		$result[] = array( 'limit' => $row['image_view'], 'order' => $row['order'], 'rating' => $row['rating']);
+	
+	} 
+
+if(!empty($result[0])) {
+	return $result[0];
+}
+
+
+
+} 
+
+
+
+
+
+function user_setting_limit_input($user_id, $limit, $order, $rating){
+
+	$limit= (int) $limit; 
+	
+	$query = mysql_query("SELECT COUNT(`user_id`) from `user_settings` WHERE `user_id` = '$user_id'  ");
+			
+		if( mysql_result($query,0)>=1) {
+			
+		mysql_query("UPDATE `user_settings` SET `image_view` = '$limit', `order` = '$order', `rating` = '$rating'  WHERE `user_id` = '$user_id' ");
+					
+	
+		} else{
+				
+		mysql_query("INSERT INTO `user_settings` (`user_id`, `image_view`, `order`, `rating`) VALUES ('$user_id' , '$limit', '$order', '$rating')");
+
+		} 
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function get_reported_images(){
 
 $result = array();

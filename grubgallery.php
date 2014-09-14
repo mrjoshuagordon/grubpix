@@ -15,10 +15,10 @@ $grub_ids = find_grub_ids_by_settings();
 //print_r(image_data( $grub_ids[0]));
 
 
-
+// retreive the user settings for limit
 
 if(isset($_POST['peer-id'])) {
-	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'] ); 	
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'],$_POST['rating-id'] ); 	
 	$result = get_setting_limit($session_user_id);
 	$limit = $result['limit'];
 	//header('Location: grubgallery.php');
@@ -36,15 +36,15 @@ if(isset($_POST['peer-id'])) {
 
 
 		}
-} 
+}  // end limit find 
 
 
-
+// retreive the user settings for sort 
 if(isset($_POST['sort-id'])) {
 
 	$_POST['sort-id'] == 'Newest' ? $order = 'DESC' : $order = 'ASC';
 
-	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order ); 	
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order,$_POST['rating-id'] ); 	
 	$result = get_setting_limit($session_user_id);
 	$order = $result['order'];
 	header('Location: grubgallery.php');
@@ -64,7 +64,32 @@ if(isset($_POST['sort-id'])) {
 
 
 		}
-} 
+} // emd order find 
+
+
+
+
+
+if(isset($_POST['rating-id'])) {
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order, $_POST['rating-id'] ); 	
+	$result = get_setting_limit($session_user_id);
+	$rating = $result['rating'];
+	//header('Location: grubgallery.php');
+	
+} else{
+
+	if(!empty(get_setting_limit($session_user_id)))  {
+			$result = get_setting_limit($session_user_id);
+			$rating = $result['rating'];
+		
+	
+	} else{
+	
+	$rating = 1;
+
+
+		}
+}  // end limit find 
 
 
 
@@ -74,13 +99,15 @@ if(isset($_POST['sort-id'])) {
 
 
 
-$images = find_public_images_query($grub_ids, $order); 
+
+$images = find_public_images_query($grub_ids, $order, $rating); 
 
 
 //echo $order;
 
 
 $limits = [1,2,5,10,25,50,100,500,1000];
+$ratings = [0,1,2,3,4];
 ?>
 
 <script>
@@ -96,7 +123,9 @@ function change(){
 
 
 <form id="myform" method="post">
-Grubs shown:  <select name = 'peer-id' onchange="change()" width="80" style="width: 80px" >
+Grubs shown: 
+
+<select name = 'peer-id' onchange="change()" width="80" style="width: 80px" >
 	
 	<option><?php echo $limit; ?> </option>
 								<?php
@@ -118,6 +147,26 @@ Show First:  <select name = 'sort-id' onchange="change()" width="100" style="wid
 	
 	
 </select>
+
+
+</select>
+
+Avg Rating:  <select name = 'rating-id' onchange="change()" width="100" style="width: 100px" >
+	
+	<!-- Code to change the rating -->
+	
+	<option><?php echo $rating .'+'; ?> </option>
+								<?php
+								for($i=0; $i<5; $i++){
+								if($ratings[$i] != $rating ) {
+								echo '<option>'.$ratings[$i].'+ </option>' ;
+								}
+							}			?>	
+	
+	
+</select>
+
+
 
 
 </form> 
