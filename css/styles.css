@@ -796,7 +796,11 @@ td.image-detail-data{
 		
 }
 
-
+input#BX_Ingredient, input#BX_amount{
+	width:75%;
 
 }
 
+
+
+} /** End Media Screen/

@@ -89,7 +89,7 @@ $recipe_id =  $recipe_result['recipe_id'] ;
 $recipe_data = find_recipe_data($recipe_id);
 //print_r($recipe_data );
 
-echo '<form action="" method="post" name="ingredientForm">   <tr> <td> Ingredient </td> <td> Amount </td> <td> Unit </td> <td>  Ing </td> </tr>';
+echo '<form action="" method="post" name="ingredientForm">   <tr> <td> Ingredient </td> <td> Amount </td> <td> Unit </td> <td>  Remove? </td> </tr>';
 for($i = 0; $i < count($recipe_data ); $i++){
 	$id[] = $recipe_data[$i]['ingredient_id'];
 	echo '<tr> <td>'.  $recipe_data[$i]['ingredient_name'].'</td> <td>'. $recipe_data[$i]['amount'] . '</td> <td>'. $recipe_data[$i]['unit'] . '</td> <td><a href="removeingredient.php?id='.$recipe_data[$i]['ingredient_id'].'&grub_id='.$image_id.'"> Remove </a> </td>  </tr>';
@@ -118,17 +118,17 @@ echo '</form>'
 	<p>
 	
 	<td>
-	<label>Ingredient</label>
+	<label>Ingredient</label><br>
 
 	 <input type="text" id="BX_Ingredient" name="BX_Ingredient[]">
 
 	</td>
 	<td>
-	<label for="BX_age">Amount</label>
-	<input type="text" class="small"  name="BX_Amount[]">
+	<label for="BX_age">Amount</label> <br>
+	<input id="BX_amount" type="text" class="small"  name="BX_Amount[]">
 	</td>
 	<td id="unit-selector">
-	<label for="BX_gender">Units</label>
+	<label for="BX_gender">Units</label> <br>
 	<select id="BX_gender" name="BX_Unit[]">
 		<option>....</option>
 		<option>Grams</option>
