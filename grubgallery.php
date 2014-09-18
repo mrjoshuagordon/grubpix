@@ -9,16 +9,23 @@ $grub_ids = find_grub_ids_by_settings();
 //die();
 
 //$order = 'ASC';
-
-
-
+//$locations= get_locations_for_gallery();
+$locations = array_merge(array('Any'), get_locations_for_gallery());
+print_r($locations);
 //print_r(image_data( $grub_ids[0]));
+
+
+
+
+
+
+
 
 
 // retreive the user settings for limit
 
 if(isset($_POST['peer-id'])) {
-	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'],$_POST['rating-id'] ); 	
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$_POST['sort-id'],$_POST['rating-id'],'%' ); 	
 	$result = get_setting_limit($session_user_id);
 	$limit = $result['limit'];
 	//header('Location: grubgallery.php');
@@ -44,7 +51,7 @@ if(isset($_POST['sort-id'])) {
 
 	$_POST['sort-id'] == 'Newest' ? $order = 'DESC' : $order = 'ASC';
 
-	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order,$_POST['rating-id'] ); 	
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order,$_POST['rating-id'],'%' ); 	
 	$result = get_setting_limit($session_user_id);
 	$order = $result['order'];
 	header('Location: grubgallery.php');
@@ -71,7 +78,8 @@ if(isset($_POST['sort-id'])) {
 
 
 if(isset($_POST['rating-id'])) {
-	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order, $_POST['rating-id'] ); 	
+
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order, $_POST['rating-id'],'%' ); 	
 	$result = get_setting_limit($session_user_id);
 	$rating = $result['rating'];
 	//header('Location: grubgallery.php');
@@ -92,15 +100,39 @@ if(isset($_POST['rating-id'])) {
 }  // end limit find 
 
 
+// retreive the user settings for sort 
+if(isset($_POST['location-id'])) {
+
+	$_POST['location-id'] == 'Any' ? $location = '%' : $location = $_POST['location-id'] ;
+	
+	user_setting_limit_input($session_user_id, $_POST['peer-id'],$order,$_POST['rating-id'],$location ); 	
+	$result = get_setting_limit($session_user_id);
+	$location = $result['location'];
+	header('Location: grubgallery.php');
+
+	
+	
+} else{
+
+	if(!empty(get_setting_limit($session_user_id)))  {
+			$result = get_setting_limit($session_user_id);
+			$location = $result['location'];
+			
+	
+	} else{
+	
+	$location = '%';
+
+
+		}
+} // emd order find 
 
 
 
+echo $location;
+//die();
 
-
-
-
-
-$images = find_public_images_query($grub_ids, $order, $rating); 
+$images = find_public_images_query($grub_ids, $order, $rating, $location); 
 
 
 //echo $order;
@@ -166,7 +198,25 @@ Avg Rating:  <select name = 'rating-id' onchange="change()" width="100" style="w
 	
 </select>
 
+</select>
 
+Location:  <select name = 'location-id' onchange="change()" width="100" style="width: 100px" >
+	
+	<!-- Code to change the rating -->
+	
+	
+	<?php if($location =='%') {$location = 'Any';}?>
+	
+	<option><?php echo $location  ?> </option>
+								<?php
+								for($i=0; $i<count($locations); $i++){
+								if($locations[$i] != $location) { 
+								echo '<option>'.$locations[$i].'</option>' ;
+								}
+							}			?>	
+	
+	
+</select>
 
 
 </form> 

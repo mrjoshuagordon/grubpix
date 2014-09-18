@@ -2,19 +2,50 @@
 
 
 
+
+function get_locations_for_gallery(){
+
+	$name = array();
+	$query_run = mysql_query("SELECT `location` FROM(
+							SELECT `location`, count(`location`) as numb from `image_data` GROUP BY `location` )  as temp
+WHERE numb > 3");
+		
+		while($query_row = mysql_fetch_assoc($query_run)){
+		
+			  $name[] = $query_row['location'];
+		
+		}
+
+	return($name);
+}
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
 // user to find get the images returned the order specified by the user on the gallery page
-function find_public_images_query( $grub_ids, $order, $rating ) {
+function find_public_images_query( $grub_ids, $order, $rating, $location ) {
 
 $ids = join(',',$grub_ids);  
 
 $result = array();
 
 $query = mysql_query("SELECT * FROM `grubs` WHERE `grub_id` IN ($ids) AND `grub_id` IN (
-
+					SELECT `grub_id` FROM `image_data`  WHERE `location` LIKE '$location' AND `grub_id` IN(
 						SELECT `grub_id` FROM (
-							SELECT `grub_id`, AVG(`rating`) AS rating FROM `grubs_ratings` GROUP BY `grub_id`
-								) as temp1 WHERE rating >= '$rating'
-							
+												SELECT `grub_id`, AVG(`rating`) AS rating FROM `grubs_ratings` GROUP BY `grub_id`
+													) as temp1 WHERE rating >= '$rating'
+											) 
 							) ORDER BY `grub_id` $order ");
 
 	while(($row = mysql_fetch_assoc($query)) !== false){
