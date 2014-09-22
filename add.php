@@ -9,6 +9,10 @@ include 'includes/overall/overallheader.php' ;
 ?> 
 
 
+
+
+<p> File Upload (jpg, jpeg, gif, or png). Max Size 10 files and 2MB each. <br> After uploading your files, add details and publish them by clicking!  </p>
+
 <?php
 		
 		if(isset($_FILES['image_add']) === true){
@@ -69,10 +73,6 @@ include 'includes/overall/overallheader.php' ;
 
 
 
-
-<p> File Upload (jpg, jpeg, gif, or png). Max Size 2MB: </p>
-
-
 	<body>
 	<div id="uploads"> </div>
 	<div class="dropzone" id="dropzone">  Drop files here to upload</div>
@@ -86,21 +86,36 @@ include 'includes/overall/overallheader.php' ;
 				anchor,mybr,img,
 				x;
 				
-
+		
+   			
+			
 			  				
 				for(x = 0; x< data.length; x = x+1 ){
 					img = document.createElement('img');
 					p = document.createElement('p');
+					
+					img_anchor = document.createElement('a');
+					img_anchor.setAttribute("target","_blank");
+					img_anchor.href = data[x].link;
+					
+					
+					
+						
 					img.setAttribute('width', '25%');
 					img.setAttribute('height', '25%');
 					img.src = data[x].file;
+				
+					img_anchor.appendChild(img);
+										
+					
 					mybr = document.createElement('br');
 					anchor = document.createElement('a');
 					anchor.setAttribute("target","_blank");
-					anchor.href = data[x].file;
+					anchor.href = data[x].link;
 					anchor.innerText = data[x].name;	
-					
-					uploads.appendChild(img);
+				
+				
+					uploads.appendChild(img_anchor);
 					uploads.appendChild(mybr);								 	
 					uploads.appendChild(anchor);
 					uploads.appendChild(p);					 	
@@ -108,6 +123,10 @@ include 'includes/overall/overallheader.php' ;
 				
 					
 				}
+				
+				
+			
+				
 			
 			}
 			
@@ -115,6 +134,9 @@ include 'includes/overall/overallheader.php' ;
 				var formData = new FormData(),
 					xhr = new XMLHttpRequest(),
 					x;
+					
+					
+					if(files.length<11) {
 					
 				for(x =0; x	< files.length; x = x + 1) {
 					formData.append('file[]',files[x]);
@@ -133,7 +155,13 @@ include 'includes/overall/overallheader.php' ;
 				xhr.send(formData);
 			
 			
-			
+			} else{
+			  			
+    	
+    			alert("Please upload 10 or fewer files");
+  
+  			
+			}
 			
 			
 			

@@ -287,7 +287,8 @@ function non_drag_add_image($user_id, $file_temp, $file_ext, $file_name){
 		mysql_query("INSERT INTO `grubs` (`user_id`, `image`, `name`, `time`) VALUES ('$user_id' , '$upload_name' , '$name', '$time' )");	 
 
 		 $display_name = 'uploads/thumbs/'.$upload_name;
-		 echo ' Image Uploaded! <br> <img src="'.$display_name.'">';
+		 echo 'Image Uploaded! <br> <a href=./grubinfo.php?image='.$upload_name.' target="blank"><img src="'.$display_name.'"> </a> <br>';
+		 echo '<a href=./grubinfo.php?image='.$upload_name.' target="blank">'. $file_name. '</a>';
 }
 
 

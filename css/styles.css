@@ -64,12 +64,13 @@ aside.sidebar {
 
 div#profile-aside{
 float:left;
+width:100px;
 
 }
 
 div#loggedin-sidebar{
-	margin-left: 50%;
-	padding-top:25%;
+	margin-left: 45%;
+	padding-top:20%;
 }
 
 
@@ -724,7 +725,7 @@ div#side-panel{
 
 /*Small Screen Size*/
 
-@media screen and (max-width: 730px ), screen and (max-height: 700px) {
+@media screen and (max-width: 730px ), screen and (max-height: 600px) {
 
 	div#container { width: auto; }
 

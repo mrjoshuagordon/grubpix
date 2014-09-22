@@ -41,7 +41,8 @@ if(!empty($_FILES['file']['name'][0])){
 	if(move_uploaded_file($_FILES['file']['tmp_name'][$position], 'uploads/'.$random_name)){
 			$uploaded[] = array(
 				'name' => $name,
-				'file' => 'uploads/' . $random_name
+				'file' => 'uploads/' . $random_name,
+				'link' => 'grubinfo.php?image=' . $random_name
 			
 	 		);
 	
